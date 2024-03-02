@@ -40,8 +40,6 @@ const Image = styled.img`
 	margin: 0 auto;
 	width: 280px;
 	height: 170px;
-
-
 `
 const Title = styled.h1`
 	color: rgb(0, 0, 0);

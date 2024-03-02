@@ -1,18 +1,25 @@
-import './App.css';
 import styled from 'styled-components';
+import './App.css';
+import { Header } from './header/Header';
+import { Main } from './main/Main';
+import { Quote } from './sections/Quote';
+import { Projects } from './sections/projects/Projects';
 
 
 function App() {
-    return (
-        <div className="App">
-        </div>
-    );
+  return (
+    <Container>
+      <Header />
+      <Main />
+			<Quote />
+			<Projects />
+    </Container>
+  );
 }
 
 export default App;
 
-const Title = styled.h1`
-    font-size: 1.5em;
-    text-align: center;
-    color: #e91e63;
-`;
+const Container = styled.div`
+	max-width:  1178px;
+	margin: 0 auto;
+`
