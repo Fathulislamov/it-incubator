@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import './App.css';
 import { Header } from './header/Header';
 import { Main } from './main/Main';
-import { Quote } from './sections/Quote';
 import { Projects } from './sections/projects/Projects';
+import { Quote } from './sections/quote/Quote';
+import { Skills } from './sections/skills/Skills';
 
 
 function App() {
@@ -11,8 +12,9 @@ function App() {
     <Container>
       <Header />
       <Main />
-			<Quote />
-			<Projects />
+      <Quote />
+      <Projects />
+			<Skills />
     </Container>
   );
 }
