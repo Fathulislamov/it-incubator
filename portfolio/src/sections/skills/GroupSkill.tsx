@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { BorderDiv } from "../../components/BorderDiv"
 
 type propsGroupSkillType = {
 
@@ -14,7 +15,7 @@ export const GroupSkill = (props: propsGroupSkillType) => {
     </StyleGroup>
   )
 }
-const StyleGroup = styled.div`
+const StyleGroup = styled(BorderDiv)`
 
 `
 const Title = styled.h3`

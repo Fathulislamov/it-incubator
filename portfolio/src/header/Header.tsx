@@ -1,12 +1,13 @@
 import styled from 'styled-components'
-import logo from '../assets/DefaultLogo.svg'
+import { Icon } from '../components/Icon'
+import { theme } from '../theme'
 
 
 export const Header = () => {
   return (
     <StyledHeader>
-      <WrapLogo>
-        <Logo src={logo} />
+		 <WrapLogo>
+        <Icon iconId={'defaultLogo'} width = "16px" />
         <Name>Elias</Name>
       </WrapLogo>
       <Nav>
@@ -17,32 +18,26 @@ export const Header = () => {
           <NavItem>#contacts</NavItem>
         </Menu>
         <Language>EN</Language>
-      </Nav>
+      </Nav> 
     </StyledHeader>
   )
 }
 
 const StyledHeader = styled.header`
-	width: 100%;
-	border: 2px solid red;
 	display: flex;
-	justify-content: space-between;
+	align-items: center;
+	margin-top: 32px;
+	justify-content: space-between
 
 `
 const WrapLogo = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 30px;
-
-`
-const Logo = styled.img`
-	 
 `
 const Name = styled.span`
-
+	margin-left: 6px;
 `
 const Nav = styled.nav`
-	
+	display: flex;
+	align-items: center
 `
 const Menu = styled.ul`
 	display: flex;
@@ -50,6 +45,30 @@ const Menu = styled.ul`
 `
 const NavItem = styled.li`
 `
-const Language = styled.span`
-
+const Language = styled.button`
+	border: none;
+	background-color: transparent;
+	width: 40px;
+	height: 20px;
+	color: ${theme.color.font};
+	margin-left: 27px;
+	position: relative;
+	&::before,
+	&::after {
+		display: inline-block;
+		position: absolute;
+		content: '';
+		width: 8px;
+		height: 2px;
+		top: 7px;
+		background-color: ${theme.color.font};
+	}
+	&::before{
+		right: 0;
+		transform: rotate(45deg);
+	}
+	&::after{
+		right: -5px;
+		transform: rotate(-45deg);
+	}
 `

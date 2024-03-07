@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { Cards } from './Cards'
 import imgProject1 from '../../assets/project1.jpeg'
 import imgProject2 from '../../assets/project2.jpeg'
 import imgProject3 from '../../assets/project3.jpeg'
 import { SectionTitle } from '../../components/SectionTitle'
+import { Cards } from '../../components/Cards'
 
 
 export const Projects = () => {

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Button } from "../../components/Button"
+import { Button } from "./Button"
 
 type propsCardsType = {
   title: string
@@ -14,7 +14,7 @@ export const Cards = (props: propsCardsType) => {
       <Tehnologies>{props.tehnologies}</Tehnologies>
       <Title>{props.title}</Title>
       <Description>{props.description}</Description>
-      <Button title="jjlkjl">kjlkj l</Button>
+      <Button>kjlkj l</Button>
     </StyleCards>
   )
 
