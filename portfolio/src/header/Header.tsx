@@ -1,34 +1,40 @@
 import styled from 'styled-components'
 import { Icon } from '../components/Icon'
 import { theme } from '../theme'
+import { Container } from '../components/Container'
 
 
 export const Header = () => {
   return (
     <StyledHeader>
-		 <WrapLogo>
-        <Icon iconId={'defaultLogo'} width = "16px" />
-        <Name>Elias</Name>
-      </WrapLogo>
-      <Nav>
-        <Menu>
-          <NavItem>#home</NavItem>
-          <NavItem>#works</NavItem>
-          <NavItem>#about-me</NavItem>
-          <NavItem>#contacts</NavItem>
-        </Menu>
-        <Language>EN</Language>
-      </Nav> 
+      <Container>
+        <WrapHeader>
+          <WrapLogo>
+            <Icon iconId={'defaultLogo'} width="16px" />
+            <Name>Elias</Name>
+          </WrapLogo>
+          <Nav>
+            <Menu>
+              <NavItem>#home</NavItem>
+              <NavItem>#works</NavItem>
+              <NavItem>#about-me</NavItem>
+              <NavItem>#contacts</NavItem>
+            </Menu>
+            <Language>EN</Language>
+          </Nav>
+        </WrapHeader>
+      </Container>
     </StyledHeader>
   )
 }
 
 const StyledHeader = styled.header`
+`
+const WrapHeader = styled.div`
 	display: flex;
 	align-items: center;
 	margin-top: 32px;
 	justify-content: space-between
-
 `
 const WrapLogo = styled.div`
 `

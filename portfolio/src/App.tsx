@@ -1,4 +1,3 @@
-import { Container } from './components/Container';
 import { Header } from './header/Header';
 import { Main } from './main/Main';
 import { Projects } from './sections/projects/Projects';
@@ -9,14 +8,14 @@ import { AboutMe } from './sections/about-me/AboutMe';
 
 function App() {
   return (
-    <Container>
+    <>
       <Header />
-			{/*<Main />
-      <Quote />
+      <Main />
+      {/*<Quote />
       <Projects />
-			<Skills />
-			<AboutMe />*/}
-    </Container>
+      <Skills />
+      <AboutMe /> */}
+    </>
   );
 }
 

@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
 *{
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
@@ -15,8 +16,16 @@ body {
 	font-display: swap;
 	
 }
+
 li{
 	list-style-type:  none;		
 }
 
+button {
+	padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
 `
