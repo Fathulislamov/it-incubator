@@ -4,8 +4,8 @@ import dots from '../assets/Dots.svg'
 import { Container } from "../components/Container"
 import { Button } from "../components/Button"
 import { theme } from "../theme"
-import { Icon } from "../components/Icon"
 import logo from '../assets/backgroundLogo.png'
+import { BorderDiv } from "../components/BorderDiv"
 
 export const Main = () => {
   return (
@@ -19,15 +19,11 @@ export const Main = () => {
           </WrapContent>
           <WrapImages>
             <Image src={img} />
-            <WrapBackgroundIcon>
-              <Icon iconId={'outlineLogo'} width={'100%'} />
-            </WrapBackgroundIcon>
+						<BackgroundIcon src={logo}/>
             <Dots src={dots} />
-            <CurrentWork>Currently working on Portfolio</CurrentWork>
+            <CurrentWork><span>Currently working on Portfolio</span></CurrentWork>
           </WrapImages>
         </WrapMain>
-        <img src={logo} />
-
       </Container>
     </StyleMain>
   )
@@ -40,7 +36,6 @@ const WrapMain = styled.div`
 	display: flex;
 `
 const WrapContent = styled.div`
-
 `
 const Title = styled.h1`
 	margin: 75px 0  0 0;
@@ -52,12 +47,10 @@ const Description = styled.p`
 	margin: 34px 0 21px 0 ;
 	line-height: 25px;
 	padding-right: 50px;
-
 `
 
 const WrapImages = styled.div`
 	position: relative;
-
 `
 const Image = styled.img`
 	border: 2px dashed ${theme.color.default};
@@ -66,22 +59,34 @@ const Image = styled.img`
 	margin-left: 34px;
 
 `
-
-const WrapBackgroundIcon = styled.div`
+const BackgroundIcon = styled.img`
 	max-width: 155px;
 	position: absolute;
-	top: 81px;
+	top: 86px;
 	left: 23px;
-
+	z-index: -1;
 `
 const Dots = styled.img`
 	position: absolute;
-
-	left: 200px;
+	right: 16px;
+	bottom: 95px;
 `
-const OutlineLogo = styled.img`
+const CurrentWork = styled.div`
+	border: 2px solid ${theme.color.default};
+	padding: 8px 0 8px 33px;
+	max-width: 402px;
+	margin-left: 52px; 
+	margin-top: -6px;
+	position: relative;
+	&::before{
+		content: '';
+		width: 16px;
+		height: 16px;
+		background-color: ${theme.color.accent};
+		position: absolute;
+		top: 11px;
+		left: 8px;
 
-`
-const CurrentWork = styled.span`
-
+	}
+	
 `
