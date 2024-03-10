@@ -5,7 +5,6 @@ import { Container } from "../components/Container"
 import { Button } from "../components/Button"
 import { theme } from "../theme"
 import logo from '../assets/backgroundLogo.png'
-import { BorderDiv } from "../components/BorderDiv"
 
 export const Main = () => {
   return (

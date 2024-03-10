@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { SectionTitle } from "../../components/SectionTitle"
 import { GroupSkill } from "./GroupSkill"
+import { Container } from "../../components/Container"
 
 const skills = [
   {
@@ -28,24 +29,29 @@ const skills = [
 export const Skills = () => {
   return (
     <StyleSkills>
-      <SectionTitle>Skills</SectionTitle>
-      <Figures></Figures>
-      { skills.map((item) => {
-        return <GroupSkill
-          title={item.title}
-          skills={item.skills}
-        />
-				})
-			}
+      <Container>
+        <WrapSkills>
+          <SectionTitle>Skills</SectionTitle>
+          <Figures></Figures>
+          {skills.map((item) => {
+            return <GroupSkill
+              title={item.title}
+              skills={item.skills}
+            />
+          })
+          }
+        </WrapSkills>
+      </Container>
     </StyleSkills>
   )
 }
 const StyleSkills = styled.section`
 
 `
-const Figures = styled.div`
+const WrapSkills = styled.div`
+	display: flex;
 
 `
-const WrapSkills = styled.div`
+const Figures = styled.div`
 
 `

@@ -28,4 +28,10 @@ button {
   color: inherit;
   cursor: pointer;
 }
+h2 {
+	font-size: 32px;
+	font-weight: 500;
+	line-height: 42px;
+}
+	  
 `

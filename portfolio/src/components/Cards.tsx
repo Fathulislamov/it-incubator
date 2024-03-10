@@ -7,19 +7,19 @@ type propsCardsType = {
   tehnologies: string
   description: string
 }
-export const Cards = (props: propsCardsType) => {
+export const Card = (props: propsCardsType) => {
   return (
-    <StyleCards>
+    <StyleCard>
       <Preview src={props.img} />
       <Tehnologies>{props.tehnologies}</Tehnologies>
       <Title>{props.title}</Title>
       <Description>{props.description}</Description>
       <Button>kjlkj l</Button>
-    </StyleCards>
+    </StyleCard>
   )
 
 }
-const StyleCards = styled.div`
+const StyleCard = styled.div`
 
 `
 const Preview = styled.img`
