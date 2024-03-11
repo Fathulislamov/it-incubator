@@ -21,6 +21,7 @@ const StyleQuote = styled.section`
 	overflow: hidden;
 	padding: 20px;
 	margin-top: 90px;
+
 `
 const WrapQuote = styled.div`
 	display: flex;
@@ -30,10 +31,13 @@ const WrapQuote = styled.div`
 	margin: 0 auto;
 
 `
-const Citation = styled.h2`
+const Citation = styled.h3`
 	border: 1px solid ${theme.color.default};
 	padding: 31px;
+	font-family: Fira Code;
+	font-size: 24px;
 	font-weight: 500;
+	line-height: 31px;
 	position: relative;
 	&::before{
 		content: url(${icon});

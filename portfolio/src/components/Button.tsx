@@ -26,4 +26,7 @@ const StyleBtn = styled.button<propsStyleBtnType>`
 	&:hover{
 		background-color: ${props => props.colored ? theme.color.accentLight : theme.color.defaultLight};
 	}
+	&+& {
+		margin-left: 16px;
+	}
 `

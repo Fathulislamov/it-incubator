@@ -32,6 +32,10 @@ h2 {
 	font-size: 32px;
 	font-weight: 500;
 	line-height: 42px;
+	font-size: 32px;
 }
+section {
+		margin-top: 112px;
+	}
 	  
 `
