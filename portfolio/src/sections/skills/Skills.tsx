@@ -2,6 +2,8 @@ import styled from "styled-components"
 import { SectionTitle } from "../../components/SectionTitle"
 import { GroupSkill } from "./GroupSkill"
 import { Container } from "../../components/Container"
+import { Icon } from "../../components/Icon"
+import sprite from '../../assets/sprite.svg'
 
 const skills = [
   {
@@ -31,15 +33,18 @@ export const Skills = () => {
     <StyleSkills>
       <Container>
         <WrapSkills>
-          <SectionTitle>Skills</SectionTitle>
-          <Figures></Figures>
-          {skills.map((item) => {
+          <SectionTitle firstSymbol='#' maxLineWidth='239px'>skills</SectionTitle>
+          <Figures>
+            <Icon iconId="outlineLogo" width="100px" />
+						<Icon iconId="dots" width="100px" />
+          </Figures>
+          {/*skills.map((item) => {
             return <GroupSkill
               title={item.title}
               skills={item.skills}
             />
           })
-          }
+         */ }
         </WrapSkills>
       </Container>
     </StyleSkills>
