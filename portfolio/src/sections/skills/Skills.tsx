@@ -3,7 +3,7 @@ import { SectionTitle } from "../../components/SectionTitle"
 import { GroupSkill } from "./GroupSkill"
 import { Container } from "../../components/Container"
 import { Icon } from "../../components/Icon"
-import sprite from '../../assets/sprite.svg'
+
 
 const skills = [
   {
@@ -32,19 +32,22 @@ export const Skills = () => {
   return (
     <StyleSkills>
       <Container>
+        <SectionTitle firstSymbol='#' maxLineWidth='239px'>skills</SectionTitle>
         <WrapSkills>
-          <SectionTitle firstSymbol='#' maxLineWidth='239px'>skills</SectionTitle>
           <Figures>
-            <Icon iconId="outlineLogo" width="100px" />
-						<Icon iconId="dots" width="100px" />
+            <Icon iconId="outlineLogo" width="113px" />
+            <Icon iconId="dots" width="63px" />
+            <Icon iconId="dots" width="63px" />
           </Figures>
-          {/*skills.map((item) => {
-            return <GroupSkill
-              title={item.title}
-              skills={item.skills}
-            />
-          })
-         */ }
+          <WrapGroupSkills>
+            {skills.map((item) => {
+              return <GroupSkill
+                title={item.title}
+                skills={item.skills}
+              />
+            })
+            }
+          </WrapGroupSkills>
         </WrapSkills>
       </Container>
     </StyleSkills>
@@ -58,5 +61,17 @@ const WrapSkills = styled.div`
 
 `
 const Figures = styled.div`
+	max-width: 349px;
+	width: 100%;
 
+	outline: 2px solid red;
+`
+const WrapGroupSkills = styled.div`
+	outline: 2px solid green;
+
+	&:first-child {
+		max-width: 178px;
+		width: 100%;
+		background-color: red;
+	}
 `

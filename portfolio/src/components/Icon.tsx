@@ -1,21 +1,18 @@
-import styled from 'styled-components'
-import sprite from '../assets/sprite.svg'
+import sprite from '../assets/sprite_new.svg'
 
 
 export type IconPropsType = {
   iconId: string
   fill?: string
-	width?: string
+  width?: string
+	height?: string
 }
-
+// <use xlinkHref={`${sprite}#${props.iconId}`} />
 export const Icon = (props: IconPropsType) => {
   return (
-    <Svg fill={props.fill || 'none'} viewBox="0 0 100 100">
-      <use width="300" height="300" xlinkHref={`${sprite}#${props.iconId}`} />
-    </Svg>
+    <svg fill={props.fill || 'none'} width={props.width || '100%'} height={props.height || props.width || '100%'} >
+      <use  xlinkHref={`${sprite}#${props.iconId}`} />
+    </svg>
   )
 }
 
-const Svg = styled.svg`
-
-`
