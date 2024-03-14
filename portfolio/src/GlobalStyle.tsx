@@ -35,7 +35,7 @@ h2 {
 	font-size: 32px;
 }
 section {
-		margin-top: 110px;
+		margin-top: 112px;
 	}
 	  
 `

@@ -1,22 +1,12 @@
 import styled from "styled-components"
 import { theme } from "../theme"
 
-type propsButtonType = {
-  children: string
-  colored?: boolean
-}
-
 type propsStyleBtnType = {
   colored: boolean
 }
 
-export const Button = (props: propsButtonType) => {
-  return (
-    <StyleBtn colored = {props.colored || false}>{props.children}</StyleBtn>
-  )
-}
 
-const StyleBtn = styled.button<propsStyleBtnType>`
+export const Button = styled.button<propsStyleBtnType>`
 	border-width: 1px; 
 	border-style: solid;
 	border-color: ${props => props.colored ? theme.color.accent : theme.color.default};

@@ -3,6 +3,7 @@ import { SectionTitle } from "../../components/SectionTitle"
 import { GroupSkill } from "./GroupSkill"
 import { Container } from "../../components/Container"
 import { Icon } from "../../components/Icon"
+import { theme } from "../../theme"
 
 
 const skills = [
@@ -11,12 +12,12 @@ const skills = [
     skills: 'TypeScript Lua Python JavaScript'
   },
   {
-    title: 'Database',
+    title: 'Databases',
     skills: 'SQLite PostgreSQL Mongo'
   },
   {
     title: 'Tools',
-    skills: 'VSCode Neovim Figma XFCE Arch Git Font Awesome'
+    skills: 'VSCode Neovim Linux Figma XFCE Arch Git Font Awesome'
   },
   {
     title: 'Other',
@@ -35,7 +36,7 @@ export const Skills = () => {
         <SectionTitle firstSymbol='#' maxLineWidth='239px'>skills</SectionTitle>
         <WrapSkills>
           <Figures>
-            <Icon iconId="outlineLogo" width="113px" />
+            <Icon iconId="outlineLogo" width="118px" />
             <Icon iconId="dots" width="63px" />
             <Icon iconId="dots" width="63px" />
           </Figures>
@@ -63,15 +64,66 @@ const WrapSkills = styled.div`
 const Figures = styled.div`
 	max-width: 349px;
 	width: 100%;
+	position: relative;
 
-	outline: 2px solid red;
+	& svg:first-child{
+		position: absolute;
+		top: 179px;
+		right: 186px;
+	}	
+
+	& svg:nth-child(2){
+		position: absolute;
+		top: 51px;
+		right: 253px;
+	}	
+
+	& svg:nth-child(3){
+		position: absolute;
+		top: 156px;
+		right: 76px;
+	}	
+
+	&::before{
+		content: '';
+		position: absolute;
+		width: 86px;
+		height: 86px;
+		border: 1px solid ${theme.color.default};
+		top: 12px;
+		right: 1px;
+	}
+
+	&::after{
+		content: '';
+		position: absolute;
+		width: 52px;
+		height: 52px;
+		border: 1px solid ${theme.color.default};
+		top: 205px;
+		right: -35px;
+	}
 `
 const WrapGroupSkills = styled.div`
-	outline: 2px solid green;
+	margin-top: 44px;
+	display: flex;
+	justify-content: end;
+	align-items: start;
+	flex-wrap: wrap;
+	gap: 16px;
 
-	&:first-child {
+	& div {
 		max-width: 178px;
-		width: 100%;
-		background-color: red;
 	}
+
+	& div:nth-child(3),
+	& div:nth-child(5) {
+		max-width: 196px;
+		padding: 0;
+	}
+
+	& div:nth-child(4) {
+		margin-top: -28px;
+	}
+
 `
