@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { SectionTitle } from "../../components/SectionTitle"
 import { GroupSkill } from "./GroupSkill"
 import { Container } from "../../components/Container"
-import { Icon } from "../../components/Icon"
+import { Svg } from "../../components/Svg"
 import { theme } from "../../theme"
 
 
@@ -36,9 +36,9 @@ export const Skills = () => {
         <SectionTitle firstSymbol='#' maxLineWidth='239px'>skills</SectionTitle>
         <WrapSkills>
           <Figures>
-            <Icon iconId="outlineLogo" width="118px" />
-            <Icon iconId="dots" width="63px" />
-            <Icon iconId="dots" width="63px" />
+            <Svg iconId="outlineLogo" width="118px" />
+            <Svg iconId="dots" width="63px" />
+            <Svg iconId="dots" width="63px" />
           </Figures>
           <WrapGroupSkills>
             {skills.map((item) => {

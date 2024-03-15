@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Icon } from '../components/Icon'
+import { Svg } from '../components/Svg'
 import { theme } from '../theme'
 import { Container } from '../components/Container'
 
@@ -10,7 +10,7 @@ export const Header = () => {
       <Container>
         <WrapHeader>
           <WrapLogo>
-            <Icon iconId={'defaultLogo'} width="16px" />
+            <Svg iconId={'defaultLogo'} width="16px" />
             <Name>Elias</Name>
           </WrapLogo>
           <Nav>

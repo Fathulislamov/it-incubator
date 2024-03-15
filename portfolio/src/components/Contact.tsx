@@ -1,8 +1,11 @@
 import styled from "styled-components"
 import { BorderDiv } from "./BorderDiv"
+import { Svg } from "./Svg"
+import { theme } from "../theme"
+import { DashedDiv } from "./DachedDiv"
 
 export type contact = {
-  icon: string
+  iconId: string
   address: string
 }
 
@@ -12,11 +15,16 @@ type propsContactType = {
 export const Contact = (props: propsContactType) => {
   return (
     <StyledContact>
+      <Message>Message me here</Message>
       {
         props.contacts.map((item: contact) => {
           return <>
-            <Icon src={item.icon} />
-            <Address>{item.address}</Address>
+            <WrapContactItem>
+              <DashedWrap>
+                <Svg iconId={item.iconId} width='30px' />
+              </DashedWrap>
+              <Address>{item.address}</Address>
+            </WrapContactItem>
           </>
         }
         )}
@@ -24,12 +32,33 @@ export const Contact = (props: propsContactType) => {
   )
 }
 const Address = styled.span`
-
-`
-const Icon = styled.img`
+	margin-left: 4px;
 
 `
 
 const StyledContact = styled(BorderDiv)`
+	max-width: 204px;
+	padding: 13px;
+	width: 100%;
+
+`
+const Message = styled.h3`
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 21px;
+	margin-bottom: 14px;
+
+`
+const DashedWrap = styled(DashedDiv)`
+	display: inline-block;
+	padding: 0;
+
+`
+const WrapContactItem = styled.div`
+	display: flex;
+	align-items: center;
+	&+& {
+		margin-top: 1px;
+	}
 
 `

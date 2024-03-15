@@ -8,7 +8,7 @@ export type IconPropsType = {
 	height?: string
 }
 // <use xlinkHref={`${sprite}#${props.iconId}`} />
-export const Icon = (props: IconPropsType) => {
+export const Svg = (props: IconPropsType) => {
   return (
     <svg fill={props.fill || 'none'} width={props.width || '100%'} height={props.height || props.width || '100%'} >
       <use  xlinkHref={`${sprite}#${props.iconId}`} />
