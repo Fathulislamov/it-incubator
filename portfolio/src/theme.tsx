@@ -6,5 +6,9 @@ export const theme = {
     accentLight: 'rgba(199, 120, 221, 0.2)',
     default: 'rgb(171, 178, 191)',
     defaultLight: 'rgba(171, 178, 191, 0.2)'
+  },
+  media: {
+    tablet: 'screen and (max-width: 768px)',
+    mobile: 'screen and (max-width: 576px)'
   }
 }

@@ -1,24 +1,34 @@
 import styled from 'styled-components'
-import { theme } from '../theme'
 import { Container } from '../components/Container'
 import { Logo } from '../components/Logo'
+import { DesktopMenu, menuType } from './DesktopMenu'
 
+const menuItems: menuType[] = [
+  {
+    name: 'home',
+    link: '#'
+  }, 
+  {
+    name: 'works',
+    link: '#'
+  }, 
+  {
+    name: 'about-me',
+    link: '#'
+  }, 
+  {
+    name: 'contacts',
+    link: '#'
+  }, 
 
+]
 export const Header = () => {
   return (
     <StyledHeader>
       <Container>
         <WrapHeader>
-				<Logo />
-          <Nav>
-            <Menu>
-              <NavItem>#home</NavItem>
-              <NavItem>#works</NavItem>
-              <NavItem>#about-me</NavItem>
-              <NavItem>#contacts</NavItem>
-            </Menu>
-            <Language>EN</Language>
-          </Nav>
+          <Logo />
+					<DesktopMenu menuItems = {menuItems}/>
         </WrapHeader>
       </Container>
     </StyledHeader>
@@ -32,41 +42,4 @@ const WrapHeader = styled.div`
 	align-items: center;
 	margin-top: 32px;
 	justify-content: space-between
-`
-const Nav = styled.nav`
-	display: flex;
-	align-items: center
-`
-const Menu = styled.ul`
-	display: flex;
-	gap: 30px;
-`
-const NavItem = styled.li`
-`
-const Language = styled.button`
-	border: none;
-	background-color: transparent;
-	width: 40px;
-	height: 20px;
-	color: ${theme.color.font};
-	margin-left: 27px;
-	position: relative;
-	&::before,
-	&::after {
-		display: inline-block;
-		position: absolute;
-		content: '';
-		width: 8px;
-		height: 2px;
-		top: 7px;
-		background-color: ${theme.color.font};
-	}
-	&::before{
-		right: 0;
-		transform: rotate(45deg);
-	}
-	&::after{
-		right: -5px;
-		transform: rotate(-45deg);
-	}
 `

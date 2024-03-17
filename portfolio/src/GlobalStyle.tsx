@@ -21,6 +21,9 @@ li{
 	list-style-type:  none;		
 }
 
+a {
+	text-decoration: none;
+}
 button {
 	padding: 0;
   border: none;
