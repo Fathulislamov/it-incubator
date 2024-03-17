@@ -1,3 +1,4 @@
+import { Footer } from "./footer/Footer";
 import { Header } from './header/Header';
 import { Main } from './main/Main';
 import { AboutMe } from './sections/aboutMe/AboutMe';
@@ -17,6 +18,7 @@ function App() {
       <Skills />
       <AboutMe /> 
 			<Contacts />
+			<Footer />
     </>
   );
 }

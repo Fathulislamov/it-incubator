@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Svg } from '../components/Svg'
 import { theme } from '../theme'
 import { Container } from '../components/Container'
+import { Logo } from '../components/Logo'
 
 
 export const Header = () => {
@@ -9,10 +9,7 @@ export const Header = () => {
     <StyledHeader>
       <Container>
         <WrapHeader>
-          <WrapLogo>
-            <Svg iconId={'defaultLogo'} width="16px" />
-            <Name>Elias</Name>
-          </WrapLogo>
+				<Logo />
           <Nav>
             <Menu>
               <NavItem>#home</NavItem>
@@ -35,11 +32,6 @@ const WrapHeader = styled.div`
 	align-items: center;
 	margin-top: 32px;
 	justify-content: space-between
-`
-const WrapLogo = styled.div`
-`
-const Name = styled.span`
-	margin-left: 6px;
 `
 const Nav = styled.nav`
 	display: flex;
