@@ -8,9 +8,12 @@ export type menuItemsType = {
   link: string
 }
 
-export type menuItemsPropsType = {
+export type DeviceHeaderPropsType = {
+  icons: mediaIconsType
   menuItems: menuItemsType[]
 }
+
+export type mediaIconsType = string[]
 
 const menuItems: menuItemsType[] = [
   {
@@ -31,12 +34,16 @@ const menuItems: menuItemsType[] = [
   },
 
 ]
+
+
+const mediaIcons: mediaIconsType = ['github', 'dribble', 'figma']
+
 export const Header = () => {
   return (
     <StyledHeader>
       <Container>
-        <DesktopHeader menuItems={menuItems} />
-        <MobileHeader menuItems={menuItems} />
+        <DesktopHeader menuItems={menuItems} icons = {mediaIcons}/>
+        <MobileHeader menuItems={menuItems} icons = {mediaIcons}/>
       </Container>
     </StyledHeader>
   )

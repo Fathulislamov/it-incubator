@@ -1,32 +1,53 @@
 import styled, { css } from "styled-components";
 import { Logo } from "../components/Logo";
-import { menuItemsPropsType } from "./Header";
+import { DeviceHeaderPropsType } from "./Header";
 import { theme } from "../theme";
+import { Svg } from "../components/Svg";
 
-export const MobileHeader = (props: menuItemsPropsType) => {
-  return (<>
-    <WrapHeader>
-      <Logo />
-      <Burger isOpen={true}><span></span></Burger>
-    </WrapHeader>
-    <Nav>
-      <Menu>
-        {props.menuItems.map((item: { name: string; link: string }) => {
-          return (
-            <MenuItem>
-              <MenuLink href={item.link}><span>#</span>{item.name}</MenuLink>
-            </MenuItem>
-          )
-        })}
-      </Menu>
-      <Language>EN</Language>
-    </Nav>
-  </>
+export const MobileHeader = (props: DeviceHeaderPropsType) => {
+  return (
+    <WrapMobileHeader>
+      <WrapHeader>
+        <Logo />
+        <Burger isOpen={true}><span></span></Burger>
+      </WrapHeader>
+      <Nav>
+        <Menu>
+          {props.menuItems.map((item: { name: string; link: string }) => {
+            return (
+              <MenuItem>
+                <MenuLink href={item.link}><span>#</span>{item.name}</MenuLink>
+              </MenuItem>
+            )
+          })}
+        </Menu>
+        <Language>EN</Language>
+      </Nav>
+      <Media>
+        <WrapIcons>
+          {props.icons.map((item) => {
+            return (
+              <Svg iconId={item} width='64' />
+            )
+          })}
+        </WrapIcons>
+      </Media>
+    </WrapMobileHeader>
 
   )
 }
-const WrapHeader = styled.div`
+const WrapMobileHeader = styled.div`
 	display: none;
+	min-height: 640px;
+	height: 100%;
+	flex-direction: column;
+	justify-content: flex-end;
+	@media ${theme.media.tablet} {
+		display: flex;
+	}
+
+`
+const WrapHeader = styled.div`
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -35,21 +56,20 @@ const WrapHeader = styled.div`
 	padding: 20px 17px 9px;
 	z-index: 100;
 
-	@media ${theme.media.tablet} {
-		display: block;
-	}
 `
 const Burger = styled.button<{ isOpen: boolean }>`
 	border: none;
 	background-color: ${theme.color.background};
-	width: 50px;
-	height: 100%;
+	width: 32px;
+	height: 32px;
 	position: absolute;
 	top: 0;
 	right: 0;
 	display: fixed;
-	&::focus-visible{
-		outline: ${theme.color.accent};
+	top: 11px;
+	right: 13px;
+	&:focus-visible {
+		outline: ${theme.color.accent} solid 1px;
 	}
 	span {
 		display: block;
@@ -57,12 +77,12 @@ const Burger = styled.button<{ isOpen: boolean }>`
 		height: 2px;
 		background-color: ${theme.color.font};
 		position: relative;
-		top: 4px;
-		right: -19px;
+		top: 1px;
+		right: -4px;
 		${props => props.isOpen && css<{ isOpen: boolean }>`
 			transform: rotate(45deg);
 			width: 24px;
-			right: -10px;
+			right: -4px;
 		`}
 		&::before{
 			content: '';
@@ -87,13 +107,13 @@ const Nav = styled.nav`
 	left: 0;
 	right: 0;
 	bottom: 0;
-	padding: 45px 16px 0;
+	padding: 50px 16px 0;
 	z-index: 99;
 `
 const Menu = styled.ul`
 	display: flex;
 	flex-direction: column;
-	gap: 32px;
+	gap: 31px;
 `
 const MenuItem = styled.li`
 	span {
@@ -125,7 +145,7 @@ const Language = styled.button`
 		content: '';
 		width: 8px;
 		height: 2px;
-		top: 22px;
+		top: 18px;
 		background-color: ${theme.color.font};
 	}
 	&::before{
@@ -136,4 +156,18 @@ const Language = styled.button`
 		left: 47px;
 		transform: rotate(-45deg);
 	}
+`
+
+const Media = styled.div`
+	display: flex;
+	align-items: end;
+	justify-content: start;
+	width: 100%;
+	justify-content: center;
+	z-index: 99;
+	margin-left: -16px;
+`
+const WrapIcons = styled.div`
+	display: flex;
+	gap: 8px;
 `

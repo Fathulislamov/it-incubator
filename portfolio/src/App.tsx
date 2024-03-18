@@ -12,14 +12,14 @@ function App() {
   return (
     <>
       <Header />
-			{/*  <Main />
+			{/* <Main />
       <Quote />
       <Projects />
       <Skills />
       <AboutMe /> 
 			<Contacts />
 			<Footer />
-		*/}	
+			*/}
     </>
   );
 }
