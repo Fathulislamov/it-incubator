@@ -1,45 +1,46 @@
 import styled from 'styled-components'
 import { Container } from '../components/Container'
-import { Logo } from '../components/Logo'
-import { DesktopMenu, menuType } from './DesktopMenu'
+import { DesktopHeader } from './DesktopHeader'
+import { MobileHeader } from './MobileHeader'
 
-const menuItems: menuType[] = [
+export type menuItemsType = {
+  name: string
+  link: string
+}
+
+export type menuItemsPropsType = {
+  menuItems: menuItemsType[]
+}
+
+const menuItems: menuItemsType[] = [
   {
     name: 'home',
     link: '#'
-  }, 
+  },
   {
     name: 'works',
     link: '#'
-  }, 
+  },
   {
     name: 'about-me',
     link: '#'
-  }, 
+  },
   {
     name: 'contacts',
     link: '#'
-  }, 
+  },
 
 ]
 export const Header = () => {
   return (
     <StyledHeader>
       <Container>
-        <WrapHeader>
-          <Logo />
-					<DesktopMenu menuItems = {menuItems}/>
-        </WrapHeader>
+        <DesktopHeader menuItems={menuItems} />
+        <MobileHeader menuItems={menuItems} />
       </Container>
     </StyledHeader>
   )
 }
 
 const StyledHeader = styled.header`
-`
-const WrapHeader = styled.div`
-	display: flex;
-	align-items: center;
-	margin-top: 32px;
-	justify-content: space-between
 `

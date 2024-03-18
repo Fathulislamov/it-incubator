@@ -13,5 +13,7 @@ export const Logo = () => {
 const WrapLogo = styled.div`
 `
 const Name = styled.span`
-	margin-left: 6px;
+	margin-left: 7px;
+	font-size: 16px;
+	font-weight: 700;
 `

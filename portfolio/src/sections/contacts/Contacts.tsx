@@ -3,7 +3,6 @@ import { Contact, contact } from "../../components/Contact";
 import { SectionTitle } from "../../components/SectionTitle";
 import { Container } from "../../components/Container";
 
-import Dots from '../../assets/Dots.svg'
 import { Svg } from "../../components/Svg";
 
 const contacts: contact[] = [
