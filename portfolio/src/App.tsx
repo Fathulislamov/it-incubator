@@ -12,8 +12,8 @@ function App() {
   return (
     <>
       <Header />
-			{/* <Main />
-      <Quote />
+      <Main />
+      {/* <Quote />
       <Projects />
       <Skills />
       <AboutMe /> 

@@ -17,10 +17,13 @@ export const Main = () => {
             <Button colored>Contact me!!</Button>
           </WrapContent>
           <WrapImages>
-            <Image src={img} />
-						<BackgroundIcon src={logo}/>
-            <Dots src={dots} />
+            <WrapComposition>
+              <Image src={img} />
+              <BackgroundIcon src={logo} />
+              {/*<Dots src={dots} />
             <CurrentWork><span>Currently working on Portfolio</span></CurrentWork>
+						*/}
+            </WrapComposition>
           </WrapImages>
         </WrapMain>
       </Container>
@@ -33,8 +36,10 @@ const StyleMain = styled.main`
 `
 const WrapMain = styled.div`
 	display: flex;
+	gap: 40px;
 `
 const WrapContent = styled.div`
+	max-width: 50%;
 `
 const Title = styled.h1`
 	margin: 75px 0  0 0;
@@ -51,18 +56,23 @@ const Description = styled.p`
 const WrapImages = styled.div`
 	position: relative;
 `
+const WrapComposition = styled.div`
+
+`
 const Image = styled.img`
 	border: 2px dashed ${theme.color.default};
 	max-width: 457px; 
 	object-fit: cover;
-	margin-left: 34px;
+	width: 100%;
+	flex-grow: 1;
 
 `
 const BackgroundIcon = styled.img`
 	max-width: 155px;
+	width: 34%;
 	position: absolute;
-	top: 86px;
-	left: 23px;
+	top: 59%;
+	left: -11px;
 	z-index: -1;
 `
 const Dots = styled.img`

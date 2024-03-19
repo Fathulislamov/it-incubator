@@ -12,26 +12,28 @@ export const MobileHeader = (props: DeviceHeaderPropsType) => {
         <Burger isOpen={true}><span></span></Burger>
       </WrapHeader>
       <Nav>
-        <Menu>
-          {props.menuItems.map((item: { name: string; link: string }) => {
-            return (
-              <MenuItem>
-                <MenuLink href={item.link}><span>#</span>{item.name}</MenuLink>
-              </MenuItem>
-            )
-          })}
-        </Menu>
-        <Language>EN</Language>
+        <WrapMenu>
+          <Menu>
+            {props.menuItems.map((item: { name: string; link: string }) => {
+              return (
+                <MenuItem>
+                  <MenuLink href={item.link}><span>#</span>{item.name}</MenuLink>
+                </MenuItem>
+              )
+            })}
+          </Menu>
+          <Language>EN</Language>
+        </WrapMenu>
+        <Media>
+          <WrapIcons>
+            {props.icons.map((item) => {
+              return (
+                <Svg iconId={item} width='64' />
+              )
+            })}
+          </WrapIcons>
+        </Media>
       </Nav>
-      <Media>
-        <WrapIcons>
-          {props.icons.map((item) => {
-            return (
-              <Svg iconId={item} width='64' />
-            )
-          })}
-        </WrapIcons>
-      </Media>
     </WrapMobileHeader>
 
   )
@@ -109,6 +111,12 @@ const Nav = styled.nav`
 	bottom: 0;
 	padding: 50px 16px 0;
 	z-index: 99;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow: scroll;
+`
+const WrapMenu = styled.div`
 `
 const Menu = styled.ul`
 	display: flex;
@@ -166,6 +174,7 @@ const Media = styled.div`
 	justify-content: center;
 	z-index: 99;
 	margin-left: -16px;
+	margin-bottom: 36px;
 `
 const WrapIcons = styled.div`
 	display: flex;
