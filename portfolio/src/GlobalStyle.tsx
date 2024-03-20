@@ -14,7 +14,11 @@ body {
 	color: ${theme.color.font};
 	font-family: 'Fira Code' , monospace, sans-serif;
 	font-display: swap;
-	padding-left: 30px;
+		display: flex;
+		justify-content: center;
+	@media screen and (max-width: 1368px){
+		padding-left: 30px;
+	}
 	@media ${theme.media.tablet}{
 		padding: 0;
 	}

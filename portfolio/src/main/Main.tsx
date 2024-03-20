@@ -14,16 +14,13 @@ export const Main = () => {
           <WrapContent>
             <Title>Elias is a <span>web designer</span> and <span>front-end developer</span></Title>
             <Description>He crafts responsive websites where technologies meet creativity</Description>
-            <Button colored>Contact me!!</Button>
+            <Btn colored>Contact me!!</Btn>
           </WrapContent>
           <WrapImages>
-            <WrapComposition>
               <Image src={img} />
               <BackgroundIcon src={logo} />
-              {/*<Dots src={dots} />
+              <Dots src={dots} />
             <CurrentWork><span>Currently working on Portfolio</span></CurrentWork>
-						*/}
-            </WrapComposition>
           </WrapImages>
         </WrapMain>
       </Container>
@@ -36,26 +33,45 @@ const StyleMain = styled.main`
 `
 const WrapMain = styled.div`
 	display: flex;
-	gap: 40px;
+	justify-content: space-between;
+	align-items: start;
+	gap: 24px;
+
+	@media ${theme.media.tablet}{
+		flex-direction: column;
+		align-items: center;
+	}
 `
 const WrapContent = styled.div`
-	max-width: 50%;
+	flex-grow: 1;
+	width: 100%;
 `
 const Title = styled.h1`
 	margin: 75px 0  0 0;
 	span {
-		color: ${theme.color.accent}
+		color: ${theme.color.accent};
+		white-space: nowrap;
 	}
 `
 const Description = styled.p`
-	margin: 34px 0 21px 0 ;
+	margin: 32px 0 22px 0 ;
 	line-height: 25px;
 	padding-right: 50px;
 `
+const Btn = styled(Button)`
+@media ${theme.media.tablet}{
+	display: none
+}
 
+`
 const WrapImages = styled.div`
 	position: relative;
+	flex-grow: 1;
+	width: 100%;
+	max-width: 457px;
+
 `
+
 const WrapComposition = styled.div`
 
 `
@@ -64,37 +80,36 @@ const Image = styled.img`
 	max-width: 457px; 
 	object-fit: cover;
 	width: 100%;
-	flex-grow: 1;
 
 `
 const BackgroundIcon = styled.img`
 	max-width: 155px;
 	width: 34%;
 	position: absolute;
-	top: 59%;
+	top: 20%;
 	left: -11px;
 	z-index: -1;
 `
 const Dots = styled.img`
 	position: absolute;
-	right: 16px;
-	bottom: 95px;
+	width: 18%;
+	right: 4%;
+	top: 58%;
 `
 const CurrentWork = styled.div`
 	border: 2px solid ${theme.color.default};
-	padding: 8px 0 8px 33px;
+	padding: 7px 0;
+	display: flex;
+	align-items: center;
 	max-width: 402px;
-	margin-left: 52px; 
-	margin-top: -6px;
+	margin: -6px 6px 0 18px; 
 	position: relative;
 	&::before{
 		content: '';
+		margin: 0 9px;
 		width: 16px;
 		height: 16px;
 		background-color: ${theme.color.accent};
-		position: absolute;
-		top: 11px;
-		left: 8px;
 
 	}
 	

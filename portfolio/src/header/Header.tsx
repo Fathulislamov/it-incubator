@@ -43,7 +43,7 @@ export const Header = () => {
     <StyledHeader>
       <Container>
         <DesktopHeader menuItems={menuItems} icons = {mediaIcons}/>
-        <MobileHeader menuItems={menuItems} icons = {mediaIcons}/>
+				{/*        <MobileHeader menuItems={menuItems} icons = {mediaIcons}/> */}
       </Container>
     </StyledHeader>
   )

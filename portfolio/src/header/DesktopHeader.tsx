@@ -52,7 +52,7 @@ const Media = styled.div`
 	width: 200px;
 	height: 311px;
 	top: 0px;
-	left: calc(100vw/2 - 672px);
+	left: calc(50vw - 666px);
 
 	@media screen and (max-width: 1360px){
 		left: 1vw;
