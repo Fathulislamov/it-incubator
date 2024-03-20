@@ -39,7 +39,7 @@ const TitleLine = styled.h2<TitlePropsType>`
     display: inline - block;
     content: "";
     margin-left: 20px;
-    width: 100%;
+    width: 64%;
     max-width: ${props => props.maxLineWidth};
     height: 2px;
     background: ${theme.color.accent };

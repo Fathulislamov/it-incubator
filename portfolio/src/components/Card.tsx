@@ -32,8 +32,10 @@ export const Card = (props: propsCardsType) => {
 
 }
 const StyleCard = styled(BorderDiv)`
+	max-width: 331px;
 `
 const Preview = styled.img`
+	width: 100%;
 
 `
 const Description = styled.p`
@@ -48,7 +50,7 @@ const Title = styled.h3`
 	line-height: 31px;
 `
 const Tehnologies = styled(BorderDiv)`
-	margin-top: -15px;
+	margin: -15px -1px 0;
 	padding: 9px 9px 2px;
 	font-size: 16px;
 	font-weight: 400;

@@ -82,6 +82,8 @@ const StyleProjects = styled.section`
 `
 const ViewLink = styled.a`
 	text-align: center;
+	white-space: nowrap;
+	margin-left: 20px;
 `
 
 const WrapProjects = styled.div`
@@ -108,5 +110,7 @@ const WrapTitle = styled.div`
 const Cards = styled.div`
 	display: flex;
 	gap: 13px;
+	justify-content: center;
 	align-items: flex-start;
+	flex-wrap: wrap;
 `
