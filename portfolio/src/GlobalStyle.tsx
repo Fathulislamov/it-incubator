@@ -23,6 +23,9 @@ body {
 		padding: 0;
 	}
 	
+		@media screen and (max-width: 360px){
+		padding: 0;
+	}
 }
 
 li{

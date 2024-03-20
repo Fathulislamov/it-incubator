@@ -17,9 +17,9 @@ export const Main = () => {
             <Btn colored>Contact me!!</Btn>
           </WrapContent>
           <WrapImages>
-              <Image src={img} />
-              <BackgroundIcon src={logo} />
-              <Dots src={dots} />
+            <Image src={img} />
+            <BackgroundIcon src={logo} />
+            <Dots src={dots} />
             <CurrentWork><span>Currently working on Portfolio</span></CurrentWork>
           </WrapImages>
         </WrapMain>
@@ -48,20 +48,25 @@ const WrapContent = styled.div`
 `
 const Title = styled.h1`
 	margin: 75px 0  0 0;
+	line-height: 42px;	
 	span {
 		color: ${theme.color.accent};
-		white-space: nowrap;
 	}
 `
 const Description = styled.p`
 	margin: 32px 0 22px 0 ;
 	line-height: 25px;
 	padding-right: 50px;
+	@media ${theme.media.tablet}{
+		margin: 21px 0 0 0 ;
+		line-height: 23px;
+		padding-right: 0;
+	}
 `
 const Btn = styled(Button)`
-@media ${theme.media.tablet}{
-	display: none
-}
+	@media ${theme.media.tablet}{
+		display: none
+	}
 
 `
 const WrapImages = styled.div`
@@ -69,18 +74,20 @@ const WrapImages = styled.div`
 	flex-grow: 1;
 	width: 100%;
 	max-width: 457px;
-
 `
 
-const WrapComposition = styled.div`
 
-`
+
 const Image = styled.img`
 	border: 2px dashed ${theme.color.default};
 	max-width: 457px; 
 	object-fit: cover;
 	width: 100%;
-
+	@media ${theme.media.tablet}{
+		max-height: 72vw;
+		padding-left: 11px;
+		width: 99%;
+	}
 `
 const BackgroundIcon = styled.img`
 	max-width: 155px;
@@ -89,12 +96,21 @@ const BackgroundIcon = styled.img`
 	top: 20%;
 	left: -11px;
 	z-index: -1;
+	@media ${theme.media.tablet}{
+		top: 16%;
+		left: 3px;
+	}
 `
 const Dots = styled.img`
 	position: absolute;
 	width: 18%;
 	right: 4%;
 	top: 58%;
+	@media ${theme.media.tablet}{
+		width: 17%;
+		right: 5%;
+		top: 52%;
+	}
 `
 const CurrentWork = styled.div`
 	border: 2px solid ${theme.color.default};
@@ -112,5 +128,8 @@ const CurrentWork = styled.div`
 		background-color: ${theme.color.accent};
 
 	}
-	
+	@media ${theme.media.mobile}{
+		margin: -6px 3px 0; 
+		padding: 7px 7px 7px 0;
+	}
 `
