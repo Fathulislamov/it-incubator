@@ -109,7 +109,7 @@ const WrapTitle = styled.div`
 `
 const Cards = styled.div`
 	display: flex;
-	gap: 13px;
+	gap: 15px;
 	justify-content: center;
 	align-items: flex-start;
 	flex-wrap: wrap;

@@ -55,6 +55,7 @@ export const Skills = () => {
   )
 }
 const StyleSkills = styled.section`
+	margin-top: 88px;
 
 `
 const WrapSkills = styled.div`
@@ -63,45 +64,60 @@ const WrapSkills = styled.div`
 `
 const Figures = styled.div`
 	max-width: 349px;
-	width: 100%;
+	width: 45%;
 	position: relative;
 
 	& svg:first-child{
 		position: absolute;
 		top: 179px;
-		right: 186px;
+		left: 14%;
 	}	
 
 	& svg:nth-child(2){
 		position: absolute;
 		top: 51px;
-		right: 253px;
+		left: 11%;
 	}	
 
 	& svg:nth-child(3){
 		position: absolute;
 		top: 156px;
-		right: 76px;
+		right: 16%;
+		@media ${theme.media.desktop}{
+			display: none;
+		}
 	}	
 
-	&::before{
-		content: '';
-		position: absolute;
-		width: 86px;
-		height: 86px;
-		border: 1px solid ${theme.color.default};
-		top: 12px;
-		right: 1px;
-	}
-
+	&::before,
 	&::after{
 		content: '';
 		position: absolute;
-		width: 52px;
-		height: 52px;
 		border: 1px solid ${theme.color.default};
+		@media ${theme.media.desktop}{
+			display: none;
+		}
+	}
+	
+	&::before{
+		width: 10vw;
+		max-width: 85px;
+		height: 10vw;
+		max-height: 85px;
+		top: 12px;
+		right: -23px;
+	}
+
+	&::after{
+		width: 5vw;
+		max-width: 50px;
+		height: 5vw;
+		max-height: 50px;
 		top: 205px;
-		right: -35px;
+		right: -59px;
+	}
+	
+	@media ${theme.media.tablet}{
+		display: none;
 	}
 `
 const WrapGroupSkills = styled.div`
@@ -111,6 +127,12 @@ const WrapGroupSkills = styled.div`
 	align-items: start;
 	flex-wrap: wrap;
 	gap: 16px;
+	flex-grow: 1;
+
+	@media ${theme.media.desktop}{
+		justify-content: space-evenly;
+	}
+
 
 	& div {
 		max-width: 178px;
@@ -124,6 +146,9 @@ const WrapGroupSkills = styled.div`
 
 	& div:nth-child(4) {
 		margin-top: -28px;
+		@media ${theme.media.desktop}{
+			margin: 0;
+		}
 	}
 
 `

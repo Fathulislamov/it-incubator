@@ -20,7 +20,7 @@ export const Quote = () => {
 const StyleQuote = styled.section`
 	overflow: hidden;
 	padding: 20px 0;
-	margin-top: 90px;
+	margin-top: 93px;
 
 `
 const WrapQuote = styled.div`
