@@ -9,7 +9,7 @@ export const AboutMe = () => {
   return (
     <StyleAboutMe>
       <Container>
-        <SectionTitle firstSymbol='#' maxLineWidth='326px'>about-me</SectionTitle>
+        <SectionTitle firstSymbol='#' width = 'calc(50vw - 230px)' maxLineWidth='322px'>about-me</SectionTitle>
         <WrapAboutMe>
           <WrapDescription>
             <Title>Hello, i’m Elias! </Title>
@@ -31,11 +31,14 @@ export const AboutMe = () => {
   )
 }
 const StyleAboutMe = styled.section`
+	overflow-x: hidden;
 
 `
 const WrapAboutMe = styled.div`
 	display: flex;
 	position: relative;
+	gap: 30px;
+
 	&::after{
 		content: '';
 		width: 88px;
@@ -45,13 +48,17 @@ const WrapAboutMe = styled.div`
 		left: -181px;
 		border: 1px solid ${theme.color.default};
 		border-left: 1px solid ${theme.color.background};
-		overflow: clip;
+	}
+	
+	@media ${theme.media.tablet}{
+		flex-direction: column;
+		align-items: center;
 	}
 `
 const WrapDescription = styled.div`
 	color: ${theme.color.default};
-	max-width: 515px;
 	line-height: 26px;
+	width: 100%;
 
 `
 const Title = styled.h3`
@@ -67,10 +74,13 @@ const ModifButton = styled(Button)`
 `
 const WrapImage = styled.div`
 	position: relative;
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
 	& svg:first-child{
 		position: absolute;
 		top: 18px;
-		left: 170px;
+		right: 240px;
 		z-index: 1;
 	}
 
@@ -84,17 +94,18 @@ const WrapImage = styled.div`
 	}
 	& svg:nth-child(3){
 		position: absolute;
-		overflow: hidden;
 		width: 106px;
 		top: 262px;
 		right: -180px;
+	}
+	@media ${theme.media.tablet}{
+		width: min-content;
 	}
 `
 const WrapImg = styled.div`
 	display: flex;
 	max-width: 339px;
 	margin-top: -43px; 
-	margin-left: 174px;
 	position: relative;
 	&::before{
 		position: absolute;
@@ -106,8 +117,13 @@ const WrapImg = styled.div`
 		background-color: ${theme.color.accent};
 		z-index: 1;
 	}
+	@media ${theme.media.tablet}{
+		margin-top: 0;
+	}
 
 `
 const Img = styled.img`
+	width: 90vw;
+	object-fit: cover;
 	border: 2px dashed ${theme.color.default};
 `

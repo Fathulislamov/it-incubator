@@ -4,6 +4,7 @@ import { SectionTitle } from "../../components/SectionTitle";
 import { Container } from "../../components/Container";
 
 import { Svg } from "../../components/Svg";
+import { theme } from "../../theme";
 
 const contacts: contact[] = [
   {
@@ -40,10 +41,14 @@ const WrapContent = styled.div`
 	margin-top: 47px;
 	justify-content: space-between;
 	position: relative;
+	gap: 20px;
 	& > svg{
 		position: absolute;
 		top: 3px;
 		left: -193px;
+	}
+	@media ${theme.media.mobile}{
+		flex-direction: column;
 	}
 `
 

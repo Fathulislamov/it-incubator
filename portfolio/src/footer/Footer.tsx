@@ -38,6 +38,11 @@ const WrapFooter = styled.div`
 	align-items: start;
 	width: 100%;
 	padding: 33px 0;
+	@media ${theme.media.mobile}{
+		gap: 30px;
+		flex-direction: column;
+	}
+
 `
 const WrapSummary = styled.div`
 	display: flex;

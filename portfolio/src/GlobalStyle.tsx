@@ -14,8 +14,8 @@ body {
 	color: ${theme.color.font};
 	font-family: 'Fira Code' , monospace, sans-serif;
 	font-display: swap;
-		display: flex;
-		justify-content: center;
+//	display: flex;
+//	justify-content: center;
 	@media screen and (max-width: 1368px){
 		padding-left: 30px;
 	}
@@ -23,7 +23,7 @@ body {
 		padding: 0;
 	}
 	
-		@media screen and (max-width: 360px){
+	@media screen and (max-width: 360px){
 		padding: 0;
 	}
 }
@@ -47,6 +47,7 @@ h2 {
 	font-weight: 500;
 	line-height: 42px;
 	font-size: 32px;
+	white-space: nowrap;
 }
 section {
 		margin-top: 112px;

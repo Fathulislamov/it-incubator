@@ -5,16 +5,20 @@ import { theme } from "../theme";
 type SectionTitlePropsType = {
   firstSymbol: '#' | '/'
   children: string
+  width?: string
   maxLineWidth?: string
 }
 
 
 
 export const SectionTitle = (props: SectionTitlePropsType) => {
-  if (props.maxLineWidth) {
-    return <TitleLine maxLineWidth={props.maxLineWidth}><span>{props.firstSymbol}</span>{props.children}</TitleLine>
-	} else 
-		return <Title><span>{props.firstSymbol}</span>{props.children}</Title>
+  if (props.maxLineWidth || props.width) {
+    return <TitleLine width={props.width}
+      maxLineWidth={props.maxLineWidth}>
+      <span>{props.firstSymbol}</span>{props.children}
+    </TitleLine>
+  } else
+    return <Title><span>{props.firstSymbol}</span>{props.children}</Title>
 }
 
 const Title = styled.h2<TitlePropsType>`
@@ -26,6 +30,7 @@ const Title = styled.h2<TitlePropsType>`
 
   `
 type TitlePropsType = {
+	width?: string
   maxLineWidth?: string
 }
 
@@ -39,10 +44,14 @@ const TitleLine = styled.h2<TitlePropsType>`
     display: inline - block;
     content: "";
     margin-left: 20px;
-    width: 64%;
-    max-width: ${props => props.maxLineWidth};
+		width: ${props => props.width || '64%'};
+		${props => props.maxLineWidth ? `max-width: ${props.maxLineWidth};` : ''}
     height: 2px;
     background: ${theme.color.accent };
     margin-top: 0.7em;
+		@media ${theme.media.tablet}{
+
+		width: 50%;
+		}
   }
 `

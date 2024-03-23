@@ -129,11 +129,6 @@ const WrapGroupSkills = styled.div`
 	gap: 16px;
 	flex-grow: 1;
 
-	@media ${theme.media.desktop}{
-		justify-content: space-evenly;
-	}
-
-
 	& div {
 		max-width: 178px;
 	}
@@ -142,6 +137,9 @@ const WrapGroupSkills = styled.div`
 	& div:nth-child(5) {
 		max-width: 196px;
 		padding: 0;
+		@media ${theme.media.desktop}{
+			max-width: auto;
+		}
 	}
 
 	& div:nth-child(4) {
@@ -150,5 +148,13 @@ const WrapGroupSkills = styled.div`
 			margin: 0;
 		}
 	}
+	@media ${theme.media.desktop}{
+		align-items: stretch;
+		justify-content: center;
+		& > div {
+			max-width: auto;
+			flex-grow: 1;
+	};
+		}
 
 `
