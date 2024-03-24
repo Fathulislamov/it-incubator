@@ -52,14 +52,10 @@ const Media = styled.div`
 	width: 200px;
 	height: 311px;
 	top: 0px;
-	left: calc(50vw - 666px);
+	left: calc(50vw - 672px);
 
 	@media screen and (max-width: 1360px){
 		left: 1vw;
-	}
-
-	@media screen and (max-width: 1100px){
-	//	display: none;
 	}
 `
 const WrapIcons = styled.div`
@@ -67,6 +63,8 @@ const WrapIcons = styled.div`
 	flex-direction: column;
 	gap: 8px;
 	position: relative;
+	background-color: ${theme.color.font};
+	z-index: 99;
 	&::before{
 		content: '';
 		height: 191px;
@@ -75,7 +73,6 @@ const WrapIcons = styled.div`
 		position: absolute;
 		top: -200px;
 		left: 15px;
-		z-index: 2;
 	}
 
 `

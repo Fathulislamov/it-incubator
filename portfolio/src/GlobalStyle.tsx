@@ -14,16 +14,11 @@ body {
 	color: ${theme.color.font};
 	font-family: 'Fira Code' , monospace, sans-serif;
 	font-display: swap;
-//	display: flex;
-//	justify-content: center;
+	min-width: 360px;
 	@media screen and (max-width: 1368px){
 		padding-left: 30px;
 	}
 	@media ${theme.media.tablet}{
-		padding: 0;
-	}
-	
-	@media screen and (max-width: 360px){
 		padding: 0;
 	}
 }
@@ -34,6 +29,7 @@ li{
 
 a {
 	text-decoration: none;
+		cursor: pointer;
 }
 button {
 	padding: 0;
@@ -50,7 +46,8 @@ h2 {
 	white-space: nowrap;
 }
 section {
-		margin-top: 112px;
+		margin-top: 107px;
+		padding-top: 5px;
 	}
 	  
 `

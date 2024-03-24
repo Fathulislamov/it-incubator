@@ -55,7 +55,7 @@ export const Skills = () => {
   )
 }
 const StyleSkills = styled.section`
-	margin-top: 88px;
+	margin-top: 89px;
 
 `
 const WrapSkills = styled.div`

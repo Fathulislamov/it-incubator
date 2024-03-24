@@ -3,15 +3,21 @@ import { Logo } from "../components/Logo";
 import { DeviceHeaderPropsType } from "./Header";
 import { theme } from "../theme";
 import { Svg } from "../components/Svg";
+import { useState } from "react";
 
 export const MobileHeader = (props: DeviceHeaderPropsType) => {
+
+  const [menuIsOpen, setmenuIsOpen] = useState(false)
+
+  const onButtonBtnClick = () => { setmenuIsOpen(!menuIsOpen) }
+
   return (
     <WrapMobileHeader>
       <WrapHeader>
         <Logo />
-        <Burger isOpen={true}><span></span></Burger>
+        <Burger isOpen={menuIsOpen} onClick={onButtonBtnClick}><span></span></Burger>
       </WrapHeader>
-      <Nav>
+      <Nav isOpen={menuIsOpen}>
         <WrapMenu>
           <Menu>
             {props.menuItems.map((item: { name: string; link: string }) => {
@@ -41,7 +47,6 @@ export const MobileHeader = (props: DeviceHeaderPropsType) => {
 const WrapMobileHeader = styled.div`
 	display: none;
 	min-height: 640px;
-	height: 100%;
 	flex-direction: column;
 	justify-content: flex-end;
 	@media ${theme.media.tablet} {
@@ -56,6 +61,7 @@ const WrapHeader = styled.div`
 	width: 100%;
 	height: 48px;
 	padding: 20px 17px 9px;
+	background-color: ${theme.color.background};
 	z-index: 100;
 
 `
@@ -65,8 +71,6 @@ const Burger = styled.button<{ isOpen: boolean }>`
 	width: 32px;
 	height: 32px;
 	position: absolute;
-	top: 0;
-	right: 0;
 	display: fixed;
 	top: 11px;
 	right: 13px;
@@ -103,9 +107,9 @@ const Burger = styled.button<{ isOpen: boolean }>`
 	}
 
 `
-const Nav = styled.nav`
+const Nav = styled.nav<{ isOpen: boolean }>`
 	position: fixed;
-	top: 48px;
+	top: ${props => props.isOpen ? '48px' : '-100vh'};
 	left: 0;
 	right: 0;
 	bottom: 0;
@@ -114,7 +118,8 @@ const Nav = styled.nav`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	overflow: scroll;
+	overflow-y: scroll;
+	background-color: ${theme.color.background};
 `
 const WrapMenu = styled.div`
 `

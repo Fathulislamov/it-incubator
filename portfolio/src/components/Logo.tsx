@@ -11,6 +11,8 @@ export const Logo = () => {
 }
 
 const WrapLogo = styled.div`
+	display: flex;
+	align-items: center;
 `
 const Name = styled.span`
 	margin-left: 7px;

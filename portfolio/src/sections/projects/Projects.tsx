@@ -77,13 +77,13 @@ export const Projects = () => {
   )
 }
 const StyleProjects = styled.section`
-	margin-top: 50px;
+	margin-top: 46px;
 	overflow: hidden;
 `
 const ViewLink = styled.a`
 	text-align: center;
 	white-space: nowrap;
-	margin-left: 20px;
+	margin: 0 -2px 0 20px;
 `
 
 const WrapProjects = styled.div`

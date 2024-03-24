@@ -43,10 +43,10 @@ const TitleLine = styled.h2<TitlePropsType>`
 	&::after {
     display: inline - block;
     content: "";
-    margin-left: 20px;
+    margin-left: 17px;
 		width: ${props => props.width || '64%'};
 		${props => props.maxLineWidth ? `max-width: ${props.maxLineWidth};` : ''}
-    height: 2px;
+    height: 1px;
     background: ${theme.color.accent };
     margin-top: 0.7em;
 		@media ${theme.media.tablet}{

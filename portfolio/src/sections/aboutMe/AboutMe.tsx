@@ -32,12 +32,11 @@ export const AboutMe = () => {
 }
 const StyleAboutMe = styled.section`
 	overflow-x: hidden;
-
 `
 const WrapAboutMe = styled.div`
 	display: flex;
 	position: relative;
-	gap: 30px;
+	gap: 24px;
 
 	&::after{
 		content: '';
@@ -80,7 +79,7 @@ const WrapImage = styled.div`
 	& svg:first-child{
 		position: absolute;
 		top: 18px;
-		right: 240px;
+		right: 260px;
 		z-index: 1;
 	}
 
@@ -105,7 +104,7 @@ const WrapImage = styled.div`
 const WrapImg = styled.div`
 	display: flex;
 	max-width: 339px;
-	margin-top: -43px; 
+	margin-top: -46px; 
 	position: relative;
 	&::before{
 		position: absolute;
@@ -123,7 +122,7 @@ const WrapImg = styled.div`
 
 `
 const Img = styled.img`
-	width: 90vw;
+	width: 100vw;
 	object-fit: cover;
 	border: 2px dashed ${theme.color.default};
 `

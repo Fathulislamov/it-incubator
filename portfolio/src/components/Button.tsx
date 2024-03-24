@@ -12,7 +12,7 @@ export const Button = styled.button<propsStyleBtnType>`
 	border-color: ${props => props.colored ? theme.color.accent : theme.color.default};
 	background-color: ${theme.color.background};
 	color: ${props => props.colored ? theme.color.font : theme.color.default};
-	padding: 8px 16px;
+	padding: 7px 16px;
 	&:hover{
 		background-color: ${props => props.colored ? theme.color.accentLight : theme.color.defaultLight};
 	}

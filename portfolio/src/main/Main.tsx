@@ -30,6 +30,10 @@ export const Main = () => {
 
 const StyleMain = styled.main`
 	margin: 70px 0;
+	@media ${theme.media.tablet}{
+		margin-top: 0;
+	}
+
 `
 const WrapMain = styled.div`
 	display: flex;
@@ -52,9 +56,12 @@ const Title = styled.h1`
 	span {
 		color: ${theme.color.accent};
 	}
+	@media ${theme.media.tablet}{
+		margin-top: 30px;
+	}
 `
 const Description = styled.p`
-	margin: 32px 0 22px 0 ;
+	margin: 32px 0 23px 0 ;
 	line-height: 25px;
 	padding-right: 50px;
 	@media ${theme.media.tablet}{
