@@ -4,6 +4,7 @@ import { DeviceHeaderPropsType } from "./Header";
 import { theme } from "../theme";
 import { Svg } from "../components/Svg";
 import { useState } from "react";
+import { GlobalStyle } from "../GlobalStyle";
 
 export const MobileHeader = (props: DeviceHeaderPropsType) => {
 
@@ -63,6 +64,7 @@ const WrapHeader = styled.div`
 	padding: 20px 17px 9px;
 	background-color: ${theme.color.background};
 	z-index: 100;
+	display: flex;
 
 `
 const Burger = styled.button<{ isOpen: boolean }>`
@@ -105,6 +107,7 @@ const Burger = styled.button<{ isOpen: boolean }>`
 
 		}
 	}
+	${ props => props.isOpen ? document.body.style.overflow = "hidden" : document.body.style.overflow  = "visible"}
 
 `
 const Nav = styled.nav<{ isOpen: boolean }>`
@@ -112,14 +115,15 @@ const Nav = styled.nav<{ isOpen: boolean }>`
 	top: ${props => props.isOpen ? '48px' : '-100vh'};
 	left: 0;
 	right: 0;
-	bottom: 0;
+	height: calc(100vh - 48px);
 	padding: 50px 16px 0;
-	z-index: 99;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	overflow-y: scroll;
-	background-color: ${theme.color.background};
+//	background-color: ${theme.color.background};
+	
+	background-color: green;
 `
 const WrapMenu = styled.div`
 `
@@ -177,8 +181,6 @@ const Media = styled.div`
 	justify-content: start;
 	width: 100%;
 	justify-content: center;
-	z-index: 99;
-	margin-left: -16px;
 	margin-bottom: 36px;
 `
 const WrapIcons = styled.div`
