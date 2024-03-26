@@ -63,7 +63,7 @@ const WrapIcons = styled.div`
 	flex-direction: column;
 	gap: 8px;
 	position: relative;
-	background-color: ${theme.color.font};
+	background-color: ${theme.color.background};
 	z-index: 99;
 	&::before{
 		content: '';

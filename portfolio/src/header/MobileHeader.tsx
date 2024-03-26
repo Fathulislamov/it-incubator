@@ -4,7 +4,6 @@ import { DeviceHeaderPropsType } from "./Header";
 import { theme } from "../theme";
 import { Svg } from "../components/Svg";
 import { useState } from "react";
-import { GlobalStyle } from "../GlobalStyle";
 
 export const MobileHeader = (props: DeviceHeaderPropsType) => {
 
@@ -121,9 +120,8 @@ const Nav = styled.nav<{ isOpen: boolean }>`
 	flex-direction: column;
 	justify-content: space-between;
 	overflow-y: scroll;
-//	background-color: ${theme.color.background};
+	background-color: ${theme.color.background};
 	
-	background-color: green;
 `
 const WrapMenu = styled.div`
 `
