@@ -5,6 +5,8 @@ import { Container } from "../components/Container"
 import { Button } from "../components/Button"
 import { theme } from "../theme"
 import logo from '../assets/backgroundLogo.png'
+import Typewriter from 'typewriter-effect';
+
 
 export const Main = () => {
   return (
@@ -12,14 +14,23 @@ export const Main = () => {
       <Container>
         <WrapMain>
           <WrapContent>
-            <Title>Elias is a <span>web designer</span> and <span>front-end developer</span></Title>
+            <WrapTitle>
+              <Title>Elias is a web designer and front-end developer</Title>
+              <Typewriter
+                options={{
+                  strings: [`Elias is a <span class="accent_font">web designer</span> and <span class="accent_font">front-end developer</span>`],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </WrapTitle>
             <Description>He crafts responsive websites where technologies meet creativity</Description>
             <Btn colored>Contact me!!</Btn>
           </WrapContent>
           <WrapImages>
-            <Image src={img} />
             <BackgroundIcon src={logo} />
             <Dots src={dots} />
+              <Image src={img} />
             <CurrentWork><span>Currently working on Portfolio</span></CurrentWork>
           </WrapImages>
         </WrapMain>
@@ -49,16 +60,30 @@ const WrapMain = styled.div`
 const WrapContent = styled.div`
 	flex-grow: 1;
 	width: 100%;
-`
-const Title = styled.h1`
-	margin: 75px 0  0 0;
-	line-height: 42px;	
-	span {
-		color: ${theme.color.accent};
+
+	.Typewriter {
+		position: absolute;
+		top: 0;
+		left: 0;
+		line-height: 42px;	
+		font-size: 32px;
+		font-weight: 600;
+		color: ${theme.color.font};
+		.accent_font {
+			color: ${theme.color.accent};
+		}
 	}
+`
+const WrapTitle = styled.div`
+	position: relative;
+	margin: 47px 0  0 0;
+	color: transparent;
 	@media ${theme.media.tablet}{
 		margin-top: 30px;
 	}
+
+`
+const Title = styled.h1`
 `
 const Description = styled.p`
 	margin: 32px 0 23px 0 ;
@@ -86,10 +111,10 @@ const WrapImages = styled.div`
 
 
 const Image = styled.img`
-	border: 2px dashed ${theme.color.default};
 	max-width: 457px; 
 	object-fit: cover;
 	width: 100%;
+	border: 2px dashed ${theme.color.default};
 	@media ${theme.media.tablet}{
 		max-height: 72vw;
 		padding-left: 11px;

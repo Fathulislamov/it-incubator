@@ -6,6 +6,7 @@ import { Contacts } from './sections/contacts/Contacts';
 import { Projects } from './sections/projects/Projects';
 import { Quote } from './sections/quote/Quote';
 import { Skills } from './sections/skills/Skills';
+import { Fade } from "react-awesome-reveal";
 
 
 function App() {
@@ -13,12 +14,14 @@ function App() {
     <>
       <Header />
       <Main />
-      <Quote />
-      <Projects />
-      <Skills />
-      <AboutMe />
-      <Contacts />
-      <Footer />
+      <Fade duration={400} cascade>
+        <Quote />
+        <Projects />
+        <Skills />
+        <AboutMe />
+        <Contacts />
+      </Fade>
+      	<Footer />
     </>
   );
 }

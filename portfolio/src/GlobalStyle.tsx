@@ -15,7 +15,6 @@ body {
 	font-family: 'Fira Code' , monospace, sans-serif;
 	font-display: swap;
 	min-width: 360px;
-		overflow: hidden;
 	@media screen and (max-width: 1368px){
 		padding-left: 30px;
 	}
