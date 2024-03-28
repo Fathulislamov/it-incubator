@@ -1,10 +1,8 @@
-import styled from 'styled-components'
 import { Container } from '../components/Container'
 import { DesktopHeader } from './DesktopHeader'
 import { MobileHeader } from './MobileHeader'
-import { theme } from '../theme'
 import { useEffect, useState } from 'react'
-
+import {S} from './Header_Styles'
 export type menuItemsType = {
   name: string
   link: string
@@ -54,21 +52,13 @@ export const Header = () => {
 
 
   return (
-    <StyledHeader>
-      <Container>
+    <S.Header>
         {width > breakpoint ?
           <DesktopHeader menuItems={menuItems} icons={mediaIcons} /> :
           <MobileHeader menuItems={menuItems} icons={mediaIcons} />
         }
-      </Container>
-    </StyledHeader>
+    </S.Header>
   )
 }
 
-const StyledHeader = styled.header`
-	position: relative;
-	height: 48px;
-	background-color: ${theme.color.background};
-	z-index: 99;
-`
 

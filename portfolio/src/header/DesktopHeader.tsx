@@ -1,123 +1,50 @@
-import styled from "styled-components";
 import { Logo } from "../components/Logo";
-import { theme } from "../theme";
 import { DeviceHeaderPropsType, menuItemsType } from "./Header";
 import { Svg } from "../components/Svg";
+import { S } from './Header_Styles'
+import styled from "styled-components";
+import { Container } from "../components/Container";
+import { theme } from "../theme";
 
 export const DesktopHeader = (props: DeviceHeaderPropsType) => {
   return (
-    <WrapHeader>
-      <Media>
-        <WrapIcons>
-          {props.icons.map((item) => {
-            return (
-              <Svg iconId={item} width='32' />
-            )
-          })}
-        </WrapIcons>
-      </Media>
-      <Logo />
-      <Nav>
-        <Menu>
-          {props.menuItems.map((item: menuItemsType) => {
-            return (
-              <MenuItem>
-                <MenuLink href={item.link}><span>#</span>{item.name}</MenuLink>
-              </MenuItem>
-            )
-          })}
-        </Menu>
-        <Language>EN</Language>
-      </Nav>
-    </WrapHeader>
+    <FixedHeader>
+      <S.DesktopMedia>
+        {props.icons.map((item, index) => {
+          return (
+            <Svg iconId={item} width='32' key={index} />
+          )
+        })}
+      </S.DesktopMedia>
+      <Container>
+        <S.WrapDesktopHeader>
+          <Logo />
+          <S.DesktopNav>
+            <S.DesktopMenu>
+              {props.menuItems.map((item: menuItemsType, index) => {
+                return (
+                  <S.MenuItem key={index}>
+                    <S.DesktopMenuLink href={item.link} ><span>#</span>{item.name}</S.DesktopMenuLink>
+                  </S.MenuItem>
+                )
+              })}
+            </S.DesktopMenu>
+            <S.DesktopLanguage>EN</S.DesktopLanguage>
+          </S.DesktopNav>
+        </S.WrapDesktopHeader>
+      </Container>
+    </FixedHeader>
 
   )
 }
-const WrapHeader = styled.div`
-	display: flex;
-	align-items: center;
-	margin-top: 32px;
-	justify-content: space-between;
-	position: relative;
-
-	@media ${theme.media.tablet} {
-		display: none;
-	}
-`
-const Media = styled.div`
-	display: flex;
-	align-items: end;
-	justify-content: start;
+const FixedHeader = styled.div`
 	position: fixed;
-	width: 200px;
-	height: 311px;
-	top: 0px;
-	left: calc(50vw - 672px);
-
-	@media screen and (max-width: 1360px){
-		left: 1vw;
+	left: 0;
+	top: 0;
+	@media screen and (max-width: 1368px){
+		padding-left: 50px;
 	}
-`
-const WrapIcons = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-	position: relative;
-	background-color: ${theme.color.background};
-	z-index: 99;
-	&::before{
-		content: '';
-		height: 191px;
-		width: 1px;
-		background-color: ${theme.color.default};
-		position: absolute;
-		top: -200px;
-		left: 15px;
-	}
-
-`
-const Nav = styled.nav`
-	display: flex;
-	align-items: center;
-`
-const Menu = styled.ul`
-	display: flex;
-	gap: 33px;
-`
-const MenuItem = styled.li`
-	span {
-		color: ${theme.color.accent};
-	}
-`
-const MenuLink = styled.a`
-	color: ${theme.color.font};
-
-`
-const Language = styled.button`
-	border: none;
-	background-color: transparent;
-	width: 40px;
-	height: 20px;
-	color: ${theme.color.font};
-	margin: 0 4px 0 22px;
-
-	position: relative;
-	&::before,
-	&::after {
-		display: inline-block;
-		position: absolute;
-		content: '';
-		width: 8px;
-		height: 2px;
-		top: 7px;
-		background-color: ${theme.color.font};
-	}
-	&::before{
-		right: 0;
-		transform: rotate(45deg);
-	}
-	&::after{
-		right: -5px;
-		transform: rotate(-45deg);
+	@media ${theme.media.tablet}{
+		padding-left: 0;
 	}
 `

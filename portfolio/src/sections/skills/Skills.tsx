@@ -41,10 +41,11 @@ export const Skills = () => {
             <Svg iconId="dots" width="63px" />
           </Figures>
           <WrapGroupSkills>
-            {skills.map((item) => {
+            {skills.map((item, index) => {
               return <GroupSkill
                 title={item.title}
                 skills={item.skills}
+								key={index}
               />
             })
             }

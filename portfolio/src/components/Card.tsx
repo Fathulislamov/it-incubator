@@ -23,8 +23,8 @@ export const Card = (props: propsCardsType) => {
       <WrapText>
         <Title>{props.title}</Title>
         <Description>{props.description}</Description>
-        {props.buttons.map((item: buttonType) => {
-          return <Button colored={item.colored}>{item.text}</Button>
+        {props.buttons.map((item: buttonType, index) => {
+          return <Button colored={item.colored} key={index}>{item.text}</Button>
         })}
       </WrapText>
     </StyleCard>

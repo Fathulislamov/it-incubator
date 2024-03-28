@@ -60,13 +60,14 @@ export const Projects = () => {
             <ViewLink>View all ~~&gt;</ViewLink>
           </WrapTitle>
           <Cards>
-            {projects.map((item) => {
+            {projects.map((item, index) => {
               return <Card
                 title={item.title}
                 img={item.img}
                 tehnologies={item.tehnologies}
                 description={item.description}
 								buttons={item.buttons}
+								key = {index}
               />
             })}
           </Cards>

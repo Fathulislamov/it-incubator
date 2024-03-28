@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { BorderDiv } from "./BorderDiv"
 import { Svg } from "./Svg"
-import { theme } from "../theme"
 import { DashedDiv } from "./DachedDiv"
 
 export type contact = {
@@ -12,23 +11,24 @@ export type contact = {
 type propsContactType = {
   contacts: contact[]
 }
+
 export const Contact = (props: propsContactType) => {
   return (
     <StyledContact>
       <Message>Message me here</Message>
       {
-        props.contacts.map((item: contact) => {
-          return <>
-            <WrapContactItem>
+        props.contacts.map((item: contact, index) => {
+          return (
+            <WrapContactItem key={index}>
               <DashedWrap>
                 <Svg iconId={item.iconId} width='30px' />
               </DashedWrap>
               <Address>{item.address}</Address>
             </WrapContactItem>
-          </>
+          )
         }
         )}
-    </StyledContact>
+    </StyledContact >
   )
 }
 const Address = styled.span`
