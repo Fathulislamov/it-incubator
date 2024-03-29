@@ -2,21 +2,32 @@ import styled, { css } from "styled-components"
 import { theme } from "../theme"
 
 const Header = styled.header`
-	position: relative;
-	height: 48px;
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	top: 0;
+	left: 50%;
+  transform: translateX(-50%);
+	height: 60px;
+	width: 100%;
+	max-width: 1084px;
+	padding: 30px 0 10px 0;
 	background-color: ${theme.color.background};
 	z-index: 99;
+	@media screen and (max-width: 1368px){
+		padding-left: 40px;
+		left: 50%;
+  	transform: translateX(-51%);
+	}
+	@media ${theme.media.tablet}{
+		padding: 0;
+	}
 `
 const WrapDesktopHeader = styled.div`
 	display: flex;
-	position: fixed;
 	width: 100%;
-	max-width: 1056px;
-	top: 0;
-  left: 50%;
-  transform: translate(-50%);
 	height: 48px;
-	padding: 20px 17px 9px;
 	background-color: ${theme.color.background};
 	justify-content: space-between;
 	z-index: 100;
@@ -30,7 +41,7 @@ const DesktopMedia = styled.div`
 	background-color: ${theme.color.background};
 	z-index: 99;
 	top: 200px;
-	left: -139px;
+	left: -124px;
 	&::before{
 		content: '';
 		position: absolute;
@@ -40,11 +51,11 @@ const DesktopMedia = styled.div`
 		top: -200px;
 		left: 15px;
 	}
-	@media screen and (max-width: 1360px){
-	//	left: calc(543px - 50vw - 32px);
+	@media screen and (max-width: 1368px){
+		left: calc(558px - 50vw);
 	}
 	@media screen and (max-width: 1065px){
-		//left: 1vw;
+		left: 16px;
 	}
 `
 const DesktopNav = styled.nav`
@@ -99,7 +110,7 @@ const WrapMobileHeader = styled.div`
 	left: 0;
 	width: 100%;
 	height: 48px;
-	padding: 20px 17px 9px;
+	padding: 12px 15px 0 20px;
 	background-color: ${theme.color.background};
 	z-index: 100;
 	display: flex;
@@ -113,7 +124,7 @@ const Burger = styled.button<{ isOpen: boolean }>`
 	position: absolute;
 	display: fixed;
 	top: 11px;
-	right: 13px;
+	right: 0px;
 	&:focus-visible {
 		outline: ${theme.color.accent} solid 1px;
 	}

@@ -40,9 +40,9 @@ export const Main = () => {
 }
 
 const StyleMain = styled.main`
-	margin: 70px 0;
+	margin: 122px 0 70px 0;
 	@media ${theme.media.tablet}{
-		margin-top: 0;
+		margin-top: 53px;
 	}
 
 `
@@ -76,7 +76,7 @@ const WrapContent = styled.div`
 `
 const WrapTitle = styled.div`
 	position: relative;
-	margin: 47px 0  0 0;
+	margin: 76px 0  0 0;
 	color: transparent;
 	@media ${theme.media.tablet}{
 		margin-top: 30px;
