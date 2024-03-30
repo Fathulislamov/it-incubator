@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { theme } from "../../theme"
 import icon from '../../assets/quote.svg'
 
-const StyleQuote = styled.section`
+const Quote = styled.section`
 	overflow: hidden;
 	padding: 20px 0;
 	margin-top: 93px;
@@ -70,7 +70,7 @@ const Author = styled.span`
 `
 
 export const S = {
-  StyleQuote,
+  Quote,
   WrapQuote,
   Citation,
   Author
