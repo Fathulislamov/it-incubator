@@ -1,11 +1,10 @@
-import styled from 'styled-components'
 import imgProject1 from '../../assets/project1.jpeg'
 import imgProject2 from '../../assets/project2.jpeg'
 import imgProject3 from '../../assets/project3.jpeg'
 import { SectionTitle } from '../../components/SectionTitle'
 import { Card } from '../../components/Card'
 import { Container } from '../../components/Container'
-import { theme } from '../../theme'
+import {S} from './Projects_Styles'
 
 const projects = [
   {
@@ -52,14 +51,14 @@ const projects = [
 
 export const Projects = () => {
   return (
-    <StyleProjects>
+    <S.StyleProjects>
       <Container>
-        <WrapProjects>
-          <WrapTitle>
+        <S.WrapProjects>
+          <S.WrapTitle>
             <SectionTitle firstSymbol='#' maxLineWidth={'511px'}>projects</SectionTitle>
-            <ViewLink>View all ~~&gt;</ViewLink>
-          </WrapTitle>
-          <Cards>
+            <S.ViewLink>View all ~~&gt;</S.ViewLink>
+          </S.WrapTitle>
+          <S.Cards>
             {projects.map((item, index) => {
               return <Card
                 title={item.title}
@@ -70,48 +69,9 @@ export const Projects = () => {
 								key = {index}
               />
             })}
-          </Cards>
-        </WrapProjects>
+          </S.Cards>
+        </S.WrapProjects>
       </Container>
-
-    </StyleProjects>
+    </S.StyleProjects>
   )
 }
-const StyleProjects = styled.section`
-	margin-top: 46px;
-	overflow: hidden;
-`
-const ViewLink = styled.a`
-	text-align: center;
-	white-space: nowrap;
-	margin: 0 -2px 0 20px;
-`
-
-const WrapProjects = styled.div`
-	position: relative;
-	&::after{
-		content: '';
-		width: 88px;
-		height: 153px;
-		position: absolute;
-		top: 270px;
-		right: -193px;
-		border: 1px solid ${theme.color.default};
-		border-right: 1px solid ${theme.color.background};
-		overflow: clip;
-	}
-`
-const WrapTitle = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 49px; 
-
-`
-const Cards = styled.div`
-	display: flex;
-	gap: 15px;
-	justify-content: center;
-	align-items: flex-start;
-	flex-wrap: wrap;
-`

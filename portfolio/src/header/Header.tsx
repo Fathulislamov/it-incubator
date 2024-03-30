@@ -3,6 +3,7 @@ import { DesktopHeader } from './DesktopHeader'
 import { MobileHeader } from './MobileHeader'
 import { useEffect, useState } from 'react'
 import { S } from './Header_Styles'
+
 export type menuItemsType = {
   name: string
   link: string
@@ -40,7 +41,6 @@ const mediaIcons: mediaIconsType = ['github', 'dribble', 'figma']
 
 export const Header = () => {
 
-
   const [width, setWidth] = useState(window.innerWidth)
   const breakpoint = 768
 
@@ -59,7 +59,6 @@ export const Header = () => {
           <MobileHeader menuItems={menuItems} icons={mediaIcons} />
         }
       </Container>
-
     </S.Header>
   )
 }

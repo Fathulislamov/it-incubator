@@ -1,6 +1,4 @@
-import styled from "styled-components"
-import { BorderDiv } from "../../components/BorderDiv"
-import { theme } from "../../theme"
+import { S } from './Skills_Styles'
 
 type propsGroupSkillType = {
 
@@ -10,26 +8,9 @@ type propsGroupSkillType = {
 
 export const GroupSkill = (props: propsGroupSkillType) => {
   return (
-    <StyleGroup>
-      <Title>{props.title}</Title>
-      <SkillsList>{props.skills}</SkillsList>
-    </StyleGroup>
+    <S.StyleGroup>
+      <S.Title>{props.title}</S.Title>
+      <S.SkillsList>{props.skills}</S.SkillsList>
+    </S.StyleGroup>
   )
 }
-const StyleGroup = styled(BorderDiv)`
-
-`
-const Title = styled.h3`
-	border-bottom: 1px solid ${theme.color.default };
-	padding: 8px;
-	font-size: 16px;
-	font-weight: 600;
-`
-const SkillsList = styled.p`
-	padding: 6px;
-	color: ${theme.color.default};
-	font-size: 16px;
-	font-weight: 400;
-	line-height: 27px;
-
-`

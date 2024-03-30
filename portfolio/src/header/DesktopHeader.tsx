@@ -2,9 +2,6 @@ import { Logo } from "../components/Logo";
 import { DeviceHeaderPropsType, menuItemsType } from "./Header";
 import { Svg } from "../components/Svg";
 import { S } from './Header_Styles'
-import styled from "styled-components";
-import { Container } from "../components/Container";
-import { theme } from "../theme";
 
 export const DesktopHeader = (props: DeviceHeaderPropsType) => {
   return (

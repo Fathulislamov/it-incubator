@@ -15,15 +15,18 @@ const Header = styled.header`
 	padding: 30px 0 10px 0;
 	background-color: ${theme.color.background};
 	z-index: 99;
+
 	@media screen and (max-width: 1368px){
 		padding-left: 40px;
 		left: 50%;
   	transform: translateX(-51%);
 	}
+
 	@media ${theme.media.tablet}{
 		padding: 0;
 	}
 `
+
 const WrapDesktopHeader = styled.div`
 	display: flex;
 	width: 100%;
@@ -32,6 +35,7 @@ const WrapDesktopHeader = styled.div`
 	justify-content: space-between;
 	z-index: 100;
 `
+
 const DesktopMedia = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -42,6 +46,7 @@ const DesktopMedia = styled.div`
 	z-index: 99;
 	top: 200px;
 	left: -124px;
+
 	&::before{
 		content: '';
 		position: absolute;
@@ -51,30 +56,36 @@ const DesktopMedia = styled.div`
 		top: -200px;
 		left: 15px;
 	}
+
 	@media screen and (max-width: 1368px){
 		left: calc(558px - 50vw);
 	}
+
 	@media screen and (max-width: 1065px){
 		left: 16px;
 	}
 `
+
 const DesktopNav = styled.nav`
 	display: flex;
 	align-items: center;
 `
+
 const DesktopMenu = styled.ul`
 	display: flex;
 	gap: 33px;
 `
+
 const MenuItem = styled.li`
 	span {
 		color: ${theme.color.accent};
 	}
 `
+
 const DesktopMenuLink = styled.a`
 	color: ${theme.color.font};
-
 `
+
 const DesktopLanguage = styled.button`
 	border: none;
 	background-color: transparent;
@@ -83,6 +94,7 @@ const DesktopLanguage = styled.button`
 	color: ${theme.color.font};
 	margin: 0 4px 0 22px;
 	position: relative;
+
 	&::before,
 	&::after {
 		display: inline-block;
@@ -103,7 +115,6 @@ const DesktopLanguage = styled.button`
 	}
 `
 
-
 const WrapMobileHeader = styled.div`
 	position: fixed;
 	top: 0;
@@ -114,8 +125,8 @@ const WrapMobileHeader = styled.div`
 	background-color: ${theme.color.background};
 	z-index: 100;
 	display: flex;
-
 `
+
 const Burger = styled.button<{ isOpen: boolean }>`
 	border: none;
 	background-color: ${theme.color.background};
@@ -125,9 +136,11 @@ const Burger = styled.button<{ isOpen: boolean }>`
 	display: fixed;
 	top: 11px;
 	right: 0px;
+
 	&:focus-visible {
 		outline: ${theme.color.accent} solid 1px;
 	}
+
 	span {
 		display: block;
 		width: 15px;
@@ -157,8 +170,8 @@ const Burger = styled.button<{ isOpen: boolean }>`
 		}
 	}
 	${props => props.isOpen ? document.body.style.overflow = "hidden" : document.body.style.overflow = "visible"}
-
 `
+
 const MobileNav = styled.nav<{ isOpen: boolean }>`
 	position: fixed;
 	top: ${props => props.isOpen ? '48px' : '-100vh'};
@@ -171,10 +184,11 @@ const MobileNav = styled.nav<{ isOpen: boolean }>`
 	justify-content: space-between;
 	overflow-y: scroll;
 	background-color: ${theme.color.background};
-	
 `
+
 const WrapMobileMenu = styled.div`
 `
+
 const MobileMenu = styled(DesktopMenu)`
 	flex-direction: column;
 	gap: 31px;
@@ -185,6 +199,7 @@ const MobileMenuLink = styled(DesktopMenuLink)`
 	font-size: 32px;
 	font-weight: 500;
 `
+
 const MobileLanguage = styled(DesktopLanguage)`
 	width: 100%;
 	height: 40px;
@@ -208,6 +223,7 @@ const MobileMedia = styled.div`
 	justify-content: center;
 	margin-bottom: 36px;
 `
+
 const MobileWrapIcons = styled.div`
 	display: flex;
 	gap: 8px;
