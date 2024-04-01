@@ -2,7 +2,7 @@ import { Contact, contact } from "../../components/Contact";
 import { SectionTitle } from "../../components/SectionTitle";
 import { Container } from "../../components/Container";
 import { Svg } from "../../components/Svg";
-import {S } from './Contact_Styles'
+import { S } from './Contact_Styles'
 
 const contacts: contact[] = [
   {

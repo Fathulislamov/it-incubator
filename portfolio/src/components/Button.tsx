@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { theme } from "../theme"
 
 type propsStyleBtnType = {
-  colored: boolean
+  colored?: boolean
 }
 
 

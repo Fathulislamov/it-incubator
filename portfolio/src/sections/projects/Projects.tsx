@@ -4,7 +4,7 @@ import imgProject3 from '../../assets/project3.jpeg'
 import { SectionTitle } from '../../components/SectionTitle'
 import { Card } from '../../components/Card'
 import { Container } from '../../components/Container'
-import {S} from './Projects_Styles'
+import { S } from './Projects_Styles'
 
 const projects = [
   {
@@ -65,8 +65,8 @@ export const Projects = () => {
                 img={item.img}
                 tehnologies={item.tehnologies}
                 description={item.description}
-								buttons={item.buttons}
-								key = {index}
+                buttons={item.buttons}
+                key={index}
               />
             })}
           </S.Cards>

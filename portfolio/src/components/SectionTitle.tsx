@@ -30,7 +30,7 @@ const Title = styled.h2<TitlePropsType>`
 
   `
 type TitlePropsType = {
-	width?: string
+  width?: string
   maxLineWidth?: string
 }
 
@@ -47,7 +47,7 @@ const TitleLine = styled.h2<TitlePropsType>`
 		width: ${props => props.width || '64%'};
 		${props => props.maxLineWidth ? `max-width: ${props.maxLineWidth};` : ''}
     height: 1px;
-    background: ${theme.color.accent };
+    background: ${theme.color.accent};
     margin-top: 0.7em;
 		@media ${theme.media.tablet}{
 

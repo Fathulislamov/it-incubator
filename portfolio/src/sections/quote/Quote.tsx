@@ -1,4 +1,4 @@
-import {S} from './Quote_Styles'
+import { S } from './Quote_Styles'
 import { Container } from "../../components/Container"
 
 export const Quote = () => {
@@ -12,6 +12,5 @@ export const Quote = () => {
       </Container>
     </S.Quote>
   )
-
 }
 

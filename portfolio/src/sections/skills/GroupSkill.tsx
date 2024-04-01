@@ -8,9 +8,9 @@ type propsGroupSkillType = {
 
 export const GroupSkill = (props: propsGroupSkillType) => {
   return (
-    <S.StyleGroup>
+    <S.Group>
       <S.Title>{props.title}</S.Title>
       <S.SkillsList>{props.skills}</S.SkillsList>
-    </S.StyleGroup>
+    </S.Group>
   )
 }

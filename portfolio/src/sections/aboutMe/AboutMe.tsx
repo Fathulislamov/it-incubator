@@ -2,13 +2,13 @@ import { SectionTitle } from "../../components/SectionTitle"
 import image from '../../assets/Image-2.png'
 import { Container } from "../../components/Container"
 import { Svg } from "../../components/Svg"
-import {S } from './AboutMe_Style'
+import { S } from './AboutMe_Style'
 
 export const AboutMe = () => {
   return (
     <S.StyleAboutMe>
       <Container>
-        <SectionTitle firstSymbol='#' width = 'calc(50vw - 230px)' maxLineWidth='322px'>about-me</SectionTitle>
+        <SectionTitle firstSymbol='#' width='calc(50vw - 230px)' maxLineWidth='322px'>about-me</SectionTitle>
         <S.WrapAboutMe>
           <S.WrapDescription>
             <S.Title>Hello, i’m Elias! </S.Title>

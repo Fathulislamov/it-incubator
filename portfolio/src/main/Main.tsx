@@ -28,7 +28,7 @@ export const Main = () => {
           <S.WrapImages>
             <S.BackgroundIcon src={logo} />
             <S.Dots src={dots} />
-              <S.Image src={img} />
+            <S.Image src={img} />
             <S.CurrentWork><span>Currently working on Portfolio</span></S.CurrentWork>
           </S.WrapImages>
         </S.WrapMain>

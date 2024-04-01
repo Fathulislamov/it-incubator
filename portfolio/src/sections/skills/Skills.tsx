@@ -29,7 +29,7 @@ const skills = [
 ]
 export const Skills = () => {
   return (
-    <S.StyleSkills>
+    <S.Skills>
       <Container>
         <SectionTitle firstSymbol='#' maxLineWidth='239px'>skills</SectionTitle>
         <S.WrapSkills>
@@ -50,6 +50,6 @@ export const Skills = () => {
           </S.WrapGroupSkills>
         </S.WrapSkills>
       </Container>
-    </S.StyleSkills>
+    </S.Skills>
   )
 }

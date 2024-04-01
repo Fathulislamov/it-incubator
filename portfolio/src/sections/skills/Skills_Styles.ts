@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { BorderDiv } from "../../components/BorderDiv"
 import { theme } from "../../theme"
 
-const StyleSkills = styled.section`
+const Skills = styled.section`
 	margin-top: 89px;
 `
 
@@ -10,7 +10,7 @@ const WrapSkills = styled.div`
 	display: flex;
 `
 
-const StyleGroup = styled(BorderDiv)`
+const Group = styled(BorderDiv)`
 `
 
 const Title = styled.h3`
@@ -125,9 +125,9 @@ const WrapGroupSkills = styled.div`
 `
 
 export const S = {
-  StyleSkills,
+  Skills,
   WrapSkills,
-  StyleGroup,
+  Group,
   Title,
   SkillsList,
   Figures,

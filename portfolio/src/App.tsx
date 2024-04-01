@@ -21,7 +21,7 @@ function App() {
         <AboutMe />
         <Contacts />
       </Fade>
-      	<Footer />
+      <Footer />
     </>
   );
 }

@@ -33,7 +33,7 @@ export const MobileHeader = (props: DeviceHeaderPropsType) => {
           <S.MobileWrapIcons>
             {props.icons.map((item, index) => {
               return (
-                <Svg iconId={item} width='64' key={index}/>
+                <Svg iconId={item} width='64' key={index} />
               )
             })}
           </S.MobileWrapIcons>
