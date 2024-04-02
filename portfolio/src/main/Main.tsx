@@ -4,9 +4,15 @@ import { Container } from "../components/Container"
 import logo from '../assets/backgroundLogo.png'
 import Typewriter from 'typewriter-effect';
 import { S } from './Main_Styles'
+import { useState } from 'react';
+import { Popup } from '../components/popup/Popup';
 
 
 export const Main = () => {
+
+  const [popupIsOpen, setpopupIsOpen] = useState(false)
+  const onButtonBtnClick = () => { setpopupIsOpen(!popupIsOpen) }
+
   return (
     <S.StyleMain>
       <Container>
@@ -23,7 +29,8 @@ export const Main = () => {
               />
             </S.WrapTitle>
             <S.Description>He crafts responsive websites where technologies meet creativity</S.Description>
-            <S.Btn colored>Contact me!!</S.Btn>
+            <S.Btn colored onClick={onButtonBtnClick}>Contact me!!</S.Btn>
+            {popupIsOpen ? <Popup closeBtn={onButtonBtnClick} popupIsOpen={popupIsOpen}/> : ''}
           </S.WrapContent>
           <S.WrapImages>
             <S.BackgroundIcon src={logo} />
