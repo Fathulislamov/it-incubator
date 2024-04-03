@@ -5,12 +5,12 @@ import { S } from './Popup_Styles'
 export const Popup = (props: { closeBtn: () => void, popupIsOpen: boolean }) => {
 
   const closePopup = () => {
-    document.body.style.overflow = "visible"
     props.closeBtn()
   }
 
   return (
-    <S.Overlay>
+    <>
+      <S.Overlay />
       <S.Popup popupIsOpen={props.popupIsOpen}>
         <S.Form>
           <S.WrapInputs>
@@ -25,7 +25,7 @@ export const Popup = (props: { closeBtn: () => void, popupIsOpen: boolean }) => 
           </S.WrapButtons>
         </S.Form>
       </S.Popup>
-    </S.Overlay>
+    </>
   )
 }
 
