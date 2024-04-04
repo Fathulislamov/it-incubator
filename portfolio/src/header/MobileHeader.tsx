@@ -5,7 +5,7 @@ import { useState } from "react";
 import { S } from './Header_Styles'
 
 
-export const MobileHeader = (props: DeviceHeaderPropsType) => {
+export const MobileHeader: React.FC<DeviceHeaderPropsType>  = (props: DeviceHeaderPropsType) => {
 
   const [menuIsOpen, setmenuIsOpen] = useState(false)
   const onButtonBtnClick = () => { setmenuIsOpen(!menuIsOpen) }

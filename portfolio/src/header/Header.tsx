@@ -39,7 +39,7 @@ const menuItems: menuItemsType[] = [
 
 const mediaIcons: mediaIconsType = ['github', 'dribble', 'figma']
 
-export const Header = () => {
+export const Header: React.FC = () => {
 
   const [width, setWidth] = useState(window.innerWidth)
   const breakpoint = 768

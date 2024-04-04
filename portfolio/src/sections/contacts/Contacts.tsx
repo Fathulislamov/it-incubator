@@ -15,7 +15,7 @@ const contacts: contact[] = [
   }
 ]
 
-export const Contacts = () => {
+export const Contacts: React.FC = () => {
   return (
     <S.StyleContacts>
       <Container>

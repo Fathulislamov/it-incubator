@@ -3,7 +3,7 @@ import { DeviceHeaderPropsType, menuItemsType } from "./Header";
 import { Svg } from "../components/Svg";
 import { S } from './Header_Styles'
 
-export const DesktopHeader = (props: DeviceHeaderPropsType) => {
+export const DesktopHeader: React.FC<DeviceHeaderPropsType> = (props: DeviceHeaderPropsType) => {
   return (
     <>
       <S.DesktopMedia>

@@ -6,7 +6,7 @@ type propsGroupSkillType = {
   skills: string
 }
 
-export const GroupSkill = (props: propsGroupSkillType) => {
+export const GroupSkill: React.FC<propsGroupSkillType> = (props: propsGroupSkillType) => {
   return (
     <S.Group>
       <S.Title>{props.title}</S.Title>

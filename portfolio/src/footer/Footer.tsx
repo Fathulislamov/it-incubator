@@ -3,7 +3,7 @@ import { Svg } from "../components/Svg"
 import { Container } from "../components/Container"
 import { S } from './Footer_Styles'
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   return (
     <S.StyledFooter>
       <Container>

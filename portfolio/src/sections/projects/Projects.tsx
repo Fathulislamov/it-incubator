@@ -49,7 +49,7 @@ const projects = [
   },
 ]
 
-export const Projects = () => {
+export const Projects: React.FC = () => {
   return (
     <S.StyleProjects>
       <Container>

@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Popup } from '../components/popup/Popup';
 
 
-export const Main = () => {
+export const Main: React.FC = () => {
 
   const [popupIsOpen, setpopupIsOpen] = useState(false)
   const onButtonBtnClick = () => { setpopupIsOpen(!popupIsOpen) }

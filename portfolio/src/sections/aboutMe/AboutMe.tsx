@@ -4,7 +4,7 @@ import { Container } from "../../components/Container"
 import { Svg } from "../../components/Svg"
 import { S } from './AboutMe_Style'
 
-export const AboutMe = () => {
+export const AboutMe: React.FC = () => {
   return (
     <S.StyleAboutMe>
       <Container>
