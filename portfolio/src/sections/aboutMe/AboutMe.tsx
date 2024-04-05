@@ -6,7 +6,7 @@ import { S } from './AboutMe_Style'
 
 export const AboutMe: React.FC = () => {
   return (
-    <S.StyleAboutMe>
+    <S.StyleAboutMe id="about-me">
       <Container>
         <SectionTitle firstSymbol='#' width='calc(50vw - 230px)' maxLineWidth='322px'>about-me</SectionTitle>
         <S.WrapAboutMe>

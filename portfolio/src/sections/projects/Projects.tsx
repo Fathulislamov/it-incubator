@@ -51,7 +51,7 @@ const projects = [
 
 export const Projects: React.FC = () => {
   return (
-    <S.StyleProjects>
+    <S.StyleProjects id="works">
       <Container>
         <S.WrapProjects>
           <S.WrapTitle>

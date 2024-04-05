@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Header />
-      <Main />
+      <Main/>
       <Fade duration={400} cascade>
         <Quote />
         <Projects />

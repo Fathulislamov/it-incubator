@@ -19,19 +19,19 @@ export type mediaIconsType = string[]
 const menuItems: menuItemsType[] = [
   {
     name: 'home',
-    link: '#'
+    link: '#home'
   },
   {
     name: 'works',
-    link: '#'
+    link: '#works'
   },
   {
     name: 'about-me',
-    link: '#'
+    link: '#about-me'
   },
   {
     name: 'contacts',
-    link: '#'
+    link: '#contacts'
   },
 
 ]

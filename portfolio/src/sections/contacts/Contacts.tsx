@@ -17,7 +17,7 @@ const contacts: contact[] = [
 
 export const Contacts: React.FC = () => {
   return (
-    <S.StyleContacts>
+    <S.StyleContacts id='contacts'>
       <Container>
         <SectionTitle firstSymbol='#' maxLineWidth='127px'>contacts</SectionTitle>
         <S.WrapContent>

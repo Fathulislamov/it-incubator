@@ -14,7 +14,7 @@ export const Main: React.FC = () => {
   const onButtonBtnClick = () => { setpopupIsOpen(!popupIsOpen) }
 
   return (
-    <S.StyleMain>
+    <S.StyleMain id='main'>
       <Container>
         <S.WrapMain>
           <S.WrapContent>
