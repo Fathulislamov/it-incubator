@@ -4,6 +4,7 @@ import { theme } from "../../theme"
 const StyleContacts = styled.section`
 `
 
+
 const WrapContent = styled.div`
 	display: flex;
 	margin-top: 47px;

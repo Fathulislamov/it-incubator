@@ -123,16 +123,16 @@ const CurrentWork = styled.div`
 	}
 `
 export const S = {
-  CurrentWork,
-  Dots,
-  BackgroundIcon,
-  Image,
-  WrapImages,
-  Btn,
-  Description,
-  Title,
-  WrapTitle,
-  WrapContent,
-  WrapMain,
-  StyleMain
+	CurrentWork,
+	Dots,
+	BackgroundIcon,
+	Image,
+	WrapImages,
+	Btn,
+	Description,
+	Title,
+	WrapTitle,
+	WrapContent,
+	WrapMain,
+	Main: StyleMain
 }

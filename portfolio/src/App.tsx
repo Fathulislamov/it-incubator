@@ -8,7 +8,6 @@ import { Quote } from './sections/quote/Quote';
 import { Skills } from './sections/skills/Skills';
 import { Fade } from "react-awesome-reveal";
 
-
 function App() {
   return (
     <>
@@ -25,6 +24,5 @@ function App() {
     </>
   );
 }
-
 export default App;
 

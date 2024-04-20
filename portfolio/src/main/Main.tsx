@@ -7,40 +7,39 @@ import { S } from './Main_Styles'
 import { useState } from 'react';
 import { Popup } from '../components/popup/Popup';
 
-
 export const Main: React.FC = () => {
 
-  const [popupIsOpen, setpopupIsOpen] = useState(false)
-  const onButtonBtnClick = () => { setpopupIsOpen(!popupIsOpen) }
+	const [popupIsOpen, setpopupIsOpen] = useState(false)
+	const onButtonBtnClick = () => { setpopupIsOpen(!popupIsOpen) }
 
-  return (
-    <S.StyleMain id='main'>
-      <Container>
-        <S.WrapMain>
-          <S.WrapContent>
-            <S.WrapTitle>
-              <S.Title>Elias is a web designer and front-end developer</S.Title>
-              <Typewriter
-                options={{
-                  strings: [`Elias is a <span class="accent_font">web designer</span> and <span class="accent_font">front-end developer</span>`],
-                  autoStart: true,
-                  loop: true,
-                }}
-              />
-            </S.WrapTitle>
-            <S.Description>He crafts responsive websites where technologies meet creativity</S.Description>
-            <S.Btn colored onClick={onButtonBtnClick}>Contact me!!</S.Btn>
-            {popupIsOpen ? <Popup closeBtn={onButtonBtnClick} popupIsOpen={popupIsOpen}/> : ''}
-          </S.WrapContent>
-          <S.WrapImages>
-            <S.BackgroundIcon src={logo} />
-            <S.Dots src={dots} />
-            <S.Image src={img} />
-            <S.CurrentWork><span>Currently working on Portfolio</span></S.CurrentWork>
-          </S.WrapImages>
-        </S.WrapMain>
-      </Container>
-    </S.StyleMain>
-  )
+	return (
+		<S.Main id='main'>
+			<Container>
+				<S.WrapMain>
+					<S.WrapContent>
+						<S.WrapTitle>
+							<S.Title>Elias is a web designer and front-end developer</S.Title>
+							<Typewriter
+								options={{
+									strings: [`Elias is a <span class="accent_font">web designer</span> and <span class="accent_font">front-end developer</span>`],
+									autoStart: true,
+									loop: true,
+								}}
+							/>
+						</S.WrapTitle>
+						<S.Description>He crafts responsive websites where technologies meet creativity</S.Description>
+						<S.Btn colored onClick={onButtonBtnClick}>Contact me!!</S.Btn>
+						{popupIsOpen ? <Popup closeBtn={onButtonBtnClick} popupIsOpen={popupIsOpen} /> : ''}
+					</S.WrapContent>
+					<S.WrapImages>
+						<S.BackgroundIcon src={logo} />
+						<S.Dots src={dots} />
+						<S.Image src={img} />
+						<S.CurrentWork><span>Currently working on Portfolio</span></S.CurrentWork>
+					</S.WrapImages>
+				</S.WrapMain>
+			</Container>
+		</S.Main>
+	)
 }
 
