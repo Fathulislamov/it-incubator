@@ -9,10 +9,7 @@ export type TaskType = {
   isDone: boolean
 }
 
-export const TodoList = ({
-  title,
-  tasks
-}: TodoListPropsType) => {
+export const TodoList = ({ title, tasks }: TodoListPropsType) => {
   // 1.
   // const title = props.title
   // const tasks = props.tasks
@@ -31,20 +28,24 @@ export const TodoList = ({
 
 
   return (
-    <div className="todolist">
-      <h3>{title}</h3>
-      <div>
-        <input />
-        <button>+</button>
+    tasks.length === 0 ? (
+      <p>Тасок нет</p>
+    ) : (
+      <div className="todolist">
+        <h3>{title}</h3>
+        <div>
+          <input />
+          <button>+</button>
+        </div>
+        <ul>
+          {taskList}
+        </ul>
+        <div>
+          <button>All</button>
+          <button>Active</button>
+          <button>Completed</button>
+        </div>
       </div>
-      <ul>
-        {taskList}
-      </ul>
-      <div>
-        <button>All</button>
-        <button>Active</button>
-        <button>Completed</button>
-      </div>
-    </div>
+    )
   )
 }
