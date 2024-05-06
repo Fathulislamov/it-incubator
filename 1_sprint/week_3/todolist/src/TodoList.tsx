@@ -5,6 +5,7 @@ type TodoListPropsType = {
   title: string
   tasks: Array<TaskType>
   removeTask: (taskId: string) => void
+	addTask: (newTaskTitle: string) => void
 }
 
 export type TaskType = {
@@ -47,7 +48,10 @@ export const TodoList = ({ title, tasks, removeTask }: TodoListPropsType) => {
     )
   })
 
-
+  const addTask = () => { alert('NewTask') }
+  const onClickHandlerCreator = (filter: FilterValuesType) => {
+    return () => setFilter(filter)
+  }
   return (
     tasks.length === 0 ? (
       <p>Тасок нет</p>
@@ -56,15 +60,15 @@ export const TodoList = ({ title, tasks, removeTask }: TodoListPropsType) => {
         <h3>{title}</h3>
         <div>
           <input />
-          <button>+</button>
+          <button onClick={addTask}>+</button>
         </div>
         <ul>
           {taskList}
         </ul>
         <div>
-          <button onClick={() => setFilter('all')}>All</button>
-          <button onClick={() => setFilter('active')}>Active</button>
-          <button onClick={() => setFilter('completed')}>Completed</button>
+          <button onClick={onClickHandlerCreator('all')}>All</button>
+          <button onClick={onClickHandlerCreator('active')}>Active</button>
+          <button onClick={onClickHandlerCreator('completed')}>Completed</button>
         </div>
       </div>
     )
