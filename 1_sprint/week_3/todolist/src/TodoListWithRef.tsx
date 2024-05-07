@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, KeyboardEvent } from "react"
+import { useRef, useState } from "react"
 import { FilterValuesType } from "./App"
 
 type TodoListPropsType = {
@@ -24,8 +24,7 @@ export const TodoList = ({ title, tasks, removeTask, addTask }: TodoListPropsTyp
 
   // local state
   const [filter, setFilter] = useState<FilterValuesType>('all')
-  const [taskTitle, setTaskTitle] = useState('')
-	const ifTaskCanAdded = taskTitle
+  const taskTitleInput = useRef<HTMLInputElement>(null)
   // UI
   const getTasksForTodoList = (allTasks: Array<TaskType>, nextFilterValue: FilterValuesType) => {
     switch (nextFilterValue) {
@@ -39,30 +38,25 @@ export const TodoList = ({ title, tasks, removeTask, addTask }: TodoListPropsTyp
   }
   const tasksForTodoList = getTasksForTodoList(tasks, filter)
 
-  const taskList: Array<JSX.Element> | JSX.Element = tasks.length
-    ? tasksForTodoList.map(task => {
-      const onCLickReamoveTaskHandler = () => removeTask(task.id)
-      return (
-        <li>
-          <input type="checkbox" checked={task.isDone} />
-          <span>{task.title}</span>
-          <button onClick={onCLickReamoveTaskHandler}>x</button>
-        </li>
-      )
-    })
-    : <div>Your taskList is empty</div>
+  const taskList: Array<JSX.Element> = tasksForTodoList.map(task => {
+    const removeTaskHanler = () => removeTask(task.id)
+    return (
+      <li>
+        <input type="checkbox" checked={task.isDone} />
+        <span>{task.title}</span>
+        <button onClick={removeTaskHanler}>x</button>
+      </li>
+    )
+  })
 
   const onClickHandlerCreator = (filter: FilterValuesType) => {
     return () => setFilter(filter)
   }
   const onCLickAddTaskHandler = () => {
-    addTask(taskTitle)
-    setTaskTitle('')
-  }
-  const onChangeSetTaskTitle = (e: ChangeEvent<HTMLInputElement>) => setTaskTitle(e.currentTarget.value)
-  const onkeyDownAddTaskHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && ifTaskCanAdded) {
-      onCLickAddTaskHandler()
+    if (taskTitleInput.current) {
+      const newTaskTitle = taskTitleInput.current.value
+      addTask(newTaskTitle)
+      taskTitleInput.current.value = ''
     }
   }
   return (
@@ -72,8 +66,8 @@ export const TodoList = ({ title, tasks, removeTask, addTask }: TodoListPropsTyp
       <div className="todolist">
         <h3>{title}</h3>
         <div>
-          <input value={taskTitle} onChange={onChangeSetTaskTitle} onKeyDown={onkeyDownAddTaskHandler} />
-          <button disabled={!ifTaskCanAdded} onClick={onCLickAddTaskHandler}>+</button>
+          <input ref={taskTitleInput} />
+          <button onClick={onCLickAddTaskHandler}>+</button>
         </div>
         <ul>
           {taskList}

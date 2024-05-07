@@ -46,6 +46,7 @@ function App() {
         title={todoListTitle}
         tasks={tasks}
         removeTask={removeTask}
+				addTask={addTask}
       />
     </div>
   );
