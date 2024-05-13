@@ -1,0 +1,25 @@
+.App {
+  padding: 30px;
+  display: flex;
+}
+
+.App > div {
+  margin-right: 50px;
+}
+
+.task {
+	font-weight: bold;
+}
+
+.task-done {
+	text-decoration: line-through;
+	opacity: 0.5;
+}
+
+.filter-btn-active {
+		background-color: chocolate;
+		color: white;
+		font-weight: bold;
+		border: 2px solid chocolate;
+		border-radius: 3px;
+}

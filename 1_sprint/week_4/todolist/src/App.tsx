@@ -3,7 +3,7 @@ import { v1 } from 'uuid';
 import './App.css';
 import { TaskType, TodoList } from './TodoList';
 
- 
+
 export type FilterValuesType = 'all' | 'active' | 'completed'
 function App() {
 
@@ -28,7 +28,7 @@ function App() {
 
     const newState = tasks.filter(t => t.id !== taskId)
     setTasks(newState)
-		
+
   }
 
   const addTask = (newTaskTitle: string) => {
@@ -41,13 +41,25 @@ function App() {
     setTasks(newState)
   }
 
+  const changeTaskStatus = (taskId: string, newIsDone: boolean) => {
+
+    // const task = tasks.find(t => t.id === taskId)
+    // if (task) {
+    //   task.isDone = newIsDone
+    //   setTasks([...tasks])
+    // }
+		const newState = tasks.map(t => t.id === taskId ? {...t, isDone: newIsDone} : t)
+			setTasks(newState)
+
+  }
   return (
     <div className="App">
       <TodoList
         title={todoListTitle}
         tasks={tasks}
         removeTask={removeTask}
-				addTask={addTask}
+        addTask={addTask}
+				changeTaskStatus={changeTaskStatus}
       />
     </div>
   );
