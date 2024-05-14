@@ -64,12 +64,15 @@ export const TodoList = ({ title, tasks, removeTask, addTask, changeTaskStatus }
     const trimmedTaskTitle = taskTitle.trim()
     if (trimmedTaskTitle) {
       addTask(trimmedTaskTitle)
-      setTaskTitle('')
-		} else {
-			setTaskTitle('Title is required')
-		}
+    } else {
+      setTaskInputError('Title is required')
+    }
+    setTaskTitle('')
   }
-  const onChangeSetTaskTitle = (e: ChangeEvent<HTMLInputElement>) => setTaskTitle(e.currentTarget.value)
+  const onChangeSetTaskTitle = (e: ChangeEvent<HTMLInputElement>) => {
+    setTaskInputError(null)
+    setTaskTitle(e.currentTarget.value)
+  }
   const onkeyDownAddTaskHandler = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && ifTaskCanAdded) {
       onCLickAddTaskHandler()
@@ -82,9 +85,9 @@ export const TodoList = ({ title, tasks, removeTask, addTask, changeTaskStatus }
       <div className="todolist">
         <h3>{title}</h3>
         <div>
-          <input value={taskTitle} onChange={onChangeSetTaskTitle} onKeyDown={onkeyDownAddTaskHandler} />
+				<input className={!!taskInputError ? "task-input-error" : ''} value={taskTitle} onChange={onChangeSetTaskTitle} onKeyDown={onkeyDownAddTaskHandler} />
           <button disabled={!ifTaskCanAdded} onClick={onCLickAddTaskHandler}>+</button>
-					{!!taskInputError && <div>{taskInputError}</div>}
+          {!!taskInputError && <div className="task-input-error-message">{taskInputError}</div>}
         </div>
         <ul>
           {taskList}

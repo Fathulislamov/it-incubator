@@ -23,3 +23,14 @@
 		border: 2px solid chocolate;
 		border-radius: 3px;
 }
+
+.task-input-error {
+		border: 3px solid red;
+		border-radius: 3px;
+		outline: none;
+}
+
+.task-input-error-message {
+	font-weight: bold;
+	color: red;
+}
