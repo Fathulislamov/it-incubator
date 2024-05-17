@@ -1,0 +1,20 @@
+.max {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: blue;
+	border-radius: 20px;
+	color: red;
+	height: 50px;
+	font-size: 25px;
+}
+.counter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: blue;
+	border-radius: 20px;
+	color: white;
+	height: 50px;
+	font-size: 25px;
+}
