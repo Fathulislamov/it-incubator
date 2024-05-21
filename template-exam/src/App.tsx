@@ -1,22 +1,20 @@
-type UserWalletType = {
-    title: string;
-    amount: number;
-}
-type UserWalletPropsType = {
-    wallet: UserWalletType;
-}
-export const UserWallet: React.FC<UserWalletPropsType> = (props) => {
-    return <div>title: {props.wallet.title}, amount: {props.wallet.amount}</div>;
-}
-export const UserMoney = () => {
-    const wallets = [
-        { title: 'bitcoin', amount: 1 },
-        { title: '$', amount: 100 }
-    ];
+import React, {useState, MouseEvent, ChangeEvent, ChangeEventHandler} from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+function User() {
+    const [userName, setUserName] = useState<string>("")
+     const onChangeHandler = (e: ChangeEventHandler<HTMLInputElement>) => setUserName(e.currentTarget.value)
     return (
         <div>
-            <UserWallet wallet={wallets[0]} />
-            <UserWallet wallet={wallets[1]} />
+            <p>{userName}</p>
+            <input
+                 onChange={onChangeHandler}
+            />
         </div>
-    );
+    )
 }
+ReactDOM.render(
+    <User/>, document.getElementById('root')
+);
+// Что надо написать вместо ххх, чтобы правильно типизировать
+// параметр функции?
