@@ -1,6 +1,9 @@
-import Button from "@mui/material/Button"
+import Box from "@mui/material/Box"
+import IconButton from "@mui/material/IconButton"
 import TextField from "@mui/material/TextField"
 import { ChangeEvent, KeyboardEvent, useState } from "react"
+import { filterButtonsContainerSx } from "./Todolist.styles"
+
 export type addItemFormPropsType = {
   addItem: (title: string) => void
 }
@@ -38,7 +41,7 @@ export const AddItemForm = ({ addItem }: addItemFormPropsType) => {
   }
 
   return (
-    <div>
+    <Box sx={filterButtonsContainerSx}>
       {/* <input
         className={error ? 'error' : ''}
         value={title}
@@ -51,18 +54,14 @@ export const AddItemForm = ({ addItem }: addItemFormPropsType) => {
         label="Enter a title"
         variant="outlined"
         size={'small'}
-				error={!!error}
-				helperText={error}
+        error={!!error}
+        helperText={error}
         value={title}
         onChange={changeItemTitleHandler}
         onKeyUp={addItemOnKeyUpHandler}
       ></TextField>
       {/*<Button title={'+'} onClick={addItemHandler} />*/}
-			<Button variant={'contained'}
-			// style={buttonStyles}
-        onClick={addItemHandler}>
-        +</Button>
-				{/* {error && <div className={'error-message'}>{error}</div>} */}
-    </div>
+      <IconButton onClick={addItemHandler} color={'primary'}>+</IconButton>
+    </Box>
   )
 }
