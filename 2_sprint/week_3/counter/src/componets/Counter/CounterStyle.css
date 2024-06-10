@@ -1,0 +1,27 @@
+.wrapCounter{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 10px;
+	width: 200px;
+	gap: 10px;
+}
+.buttons{
+	padding: 10px;
+	display: flex;
+	justify-content: space-around;
+}
+.count{
+	height: 100%;
+	display: flex;
+  justify-content: center;
+  align-items: center;
+	font-size: 40px;
+	
+}
+.counter{
+	color: #60d1f3;
+}
+.max{
+	color: #ef1442;
+}

@@ -1,0 +1,24 @@
+.valueItems {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+input {
+	max-width: 60px;
+	border-color: #60d1f3;
+	border-radius: 5px;
+	text-align: center;
+}
+
+label {
+	font-size: 18px;
+	color: #60d1f3;
+	font-weight: 800;
+}
+
+.set {
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+}
