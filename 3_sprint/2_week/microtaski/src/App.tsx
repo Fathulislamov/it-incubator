@@ -9,9 +9,9 @@ import {S} from './components/pages/_styles';
 
 
 const PATH = {
-    PAGE1: '/page1',
-    PAGE2: '/page2',
-    PAGE3: '/page3',
+    PAGE1: '/adidas',
+    PAGE2: '/puma',
+    PAGE3: '/abibas',
 } as const;
 
 function App() {
@@ -20,9 +20,9 @@ function App() {
             <div className={styles.header}><h1>HEADER</h1></div>
             <div className={styles.body}>
                 <div className={styles.nav}>
-                    <S.NavWrapper><NavLink to={PATH.PAGE1}>Page1</NavLink></S.NavWrapper>
-                    <S.NavWrapper><NavLink to={PATH.PAGE2}>Page2</NavLink></S.NavWrapper>
-                    <S.NavWrapper><NavLink to={PATH.PAGE3}>Page3</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE1}>Adidas</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE2}>Puma</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE3}>Abibas</NavLink></S.NavWrapper>
                     <a href="page3">page3 HTML</a>
                 </div>
                 <div className={styles.content}>
