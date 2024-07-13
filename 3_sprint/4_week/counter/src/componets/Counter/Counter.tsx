@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { ValuesType } from '../../App';
+import { ChangeCountAC } from '../../state/reducer';
 import { Button } from '../Button/Button';
 import './CounterStyle.css'
 
@@ -10,23 +13,28 @@ export type CounterPropsType = {
 }
 
 
-export const Counter = ({ startValue, maxValue, error, newData }: CounterPropsType) => {
+export const Counter = () => {
 
-  const [count, setCount] = useState(startValue);
 
-  useEffect(() => { setCount(startValue) }, [startValue]);
+  const count = useSelector<ValuesType, number>(state => state.count)
+  const maxValue = useSelector<ValuesType, number>(state => state.maxValue)
+  const startValue = useSelector<ValuesType, number>(state => state.startValue)
+  const error = useSelector<ValuesType, string>(state => state.error)
+  const isNewData = useSelector<ValuesType, boolean>(state => state.isNewData)
+
+  const dispatch = useDispatch()
 
   const increment = () => {
-    count < maxValue && setCount(count + 1)
+    count < maxValue && dispatch(ChangeCountAC(count + 1))
   }
 
   const reset = () => {
-    setCount(startValue)
+    dispatch(ChangeCountAC(startValue))
   }
   return (
     <div className={'wrapCounter bordered'}>
       {
-        (error || newData)
+        (error || isNewData)
           ? <div className={`${error ? 'error' : 'default-text'} bordered count`}>
             {error ? error : 'enter value and press "set"'}
           </div>
@@ -35,8 +43,8 @@ export const Counter = ({ startValue, maxValue, error, newData }: CounterPropsTy
           </div>
       }
       <div className={'buttons bordered'}>
-        <Button onClickHandler={increment} disabled={count === maxValue || newData}>inc</Button>
-        <Button onClickHandler={reset} disabled={count === startValue || newData}>reset</Button>
+        <Button onClickHandler={increment} disabled={count === maxValue || isNewData}>inc</Button>
+        <Button onClickHandler={reset} disabled={count === startValue || isNewData}>reset</Button>
       </div>
     </div >
   )
