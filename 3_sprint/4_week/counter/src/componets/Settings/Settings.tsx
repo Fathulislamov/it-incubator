@@ -3,6 +3,7 @@ import { ValueItems } from "./ValueItems/ValueItems"
 import './SettingsStyle.css'
 import { ChangeEvent } from "react"
 import { ValuesType } from "../../App"
+import { useSelector } from "react-redux"
 
 export type SettingsPropsType = {
   onChangeValue: (value: ValuesType) => void
@@ -15,6 +16,7 @@ export type SettingsPropsType = {
 
 export const Settings = ({ setNewDataHandler, onChangeValue, currentValue, error, setError, isNewData }: SettingsPropsType) => {
 
+  // const currentValue = useSelector(state => )
   const validation = (type: 'start' | 'max', value: number) => {
     let validationError = '';
     switch (type) {
