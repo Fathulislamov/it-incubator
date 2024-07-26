@@ -1,0 +1,35 @@
+.input:focus {}
+
+.input {
+	min-width: 372px;
+	height: 36px;
+	border: 1px solid rgba(209, 209, 209, 1);
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.inputWrapper {
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 5px;
+}
+
+.superInput {}
+
+.errorInput {
+	border-color: rgba(204, 20, 57, 1);
+	outline: none;
+}
+
+.errorInput:focus {
+	border-color: rgba(204, 20, 57, 1);
+	outline: none;
+}
+
+.error {
+	font-family: Montserrat;
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 12.19px;
+	color: rgba(204, 20, 57, 1);
+}
