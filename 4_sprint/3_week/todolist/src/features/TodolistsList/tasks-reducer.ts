@@ -3,6 +3,7 @@ import { TaskPriorities, TaskStatuses, TaskType, todolistsAPI, UpdateTaskModelTy
 import { Dispatch } from 'redux'
 import { AppRootStateType } from '../../app/store'
 import { setErrorAC, SetErrorType, setLoadingAC, SetLoadingType } from '../../app/app-reducer'
+import { handleServerAppError, handleServerNetworkError } from '../../utils/error-utils'
 
 const initialState: TasksStateType = {}
 
@@ -82,15 +83,12 @@ export const addTaskTC = (title: string, todolistId: string) => (dispatch: Dispa
         dispatch(action)
         dispatch(setLoadingAC('succeeded'))
       } else {
-        if (res.data.messages.length) {
-          dispatch(setErrorAC(res.data.messages[0]))
-
-        } else {
-          dispatch(setErrorAC('Some error occured'))
-        }
-        dispatch(setLoadingAC('failed'))
+				handleServerAppError(dispatch, res.data)
       }
 
+    })
+    .catch((e) => {
+      handleServerNetworkError(dispatch, e)
     })
 }
 export const updateTaskTC = (taskId: string, domainModel: UpdateDomainTaskModelType, todolistId: string) =>
@@ -120,7 +118,12 @@ export const updateTaskTC = (taskId: string, domainModel: UpdateDomainTaskModelT
         dispatch(action)
         dispatch(setLoadingAC('succeeded'))
       })
+      .catch((e) => {
+        handleServerNetworkError(dispatch, e)
+      })
   }
+
+
 
 // types
 export type UpdateDomainTaskModelType = {
