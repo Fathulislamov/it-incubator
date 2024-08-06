@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './App.css'
 import { TodolistsList } from '../features/TodolistsList/TodolistsList'
-import { useAppSelector } from './store'
+import { useAppDispatch, useAppSelector } from './store'
 import { RequestStatusType } from './app-reducer'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,10 +13,15 @@ import LinearProgress from '@mui/material/LinearProgress';
 import { Menu } from '@mui/icons-material';
 import { ErrorSnackbar } from '../components/ErrorSnackbar/ErrorSnackbar'
 import { Outlet } from 'react-router-dom'
+import { meTC } from '../features/Login/auth-reduser'
 
 
 function App() {
+  const dispatch = useAppDispatch()
   const status = useAppSelector<RequestStatusType>((state) => state.app.status)
+  useEffect(() => {
+    dispatch(meTC())
+  }, [])
   return (
     <div className="App">
       <ErrorSnackbar />
