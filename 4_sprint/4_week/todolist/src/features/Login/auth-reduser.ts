@@ -4,6 +4,8 @@ import {
   SetAppErrorActionType,
   setAppStatusAC,
   SetAppStatusActionType,
+  setIsInitealizedAC,
+  SetIsInitealizedActionType,
 } from '../../app/app-reducer'
 import { handleServerAppError, handleServerNetworkError } from '../../utils/error-utils'
 import { LoginType } from './Login'
@@ -58,6 +60,24 @@ export const meTC = () => (dispatch: Dispatch<ActionsType>) => {
     .catch((e) => {
       handleServerNetworkError(e, dispatch)
     })
+    .finally(() => {
+      return dispatch(setIsInitealizedAC(true))
+    })
+}
+export const logOutTC = () => (dispatch: Dispatch<ActionsType>) => {
+  dispatch(setAppStatusAC('loading'))
+  authAPI.logout().then((res) => {
+    if (res.data.resultCode === 0) {
+      dispatch(setIsLoggedInAC(false))
+      dispatch(setAppStatusAC('succeeded'))
+    }
+    else {
+      handleServerAppError(res.data, dispatch)
+    }
+  })
+    .catch((e) => {
+      handleServerNetworkError(e, dispatch)
+    })
 }
 
 // types
@@ -65,3 +85,4 @@ type ActionsType =
   | ReturnType<typeof setIsLoggedInAC>
   | SetAppStatusActionType
   | SetAppErrorActionType
+  |SetIsInitealizedActionType
