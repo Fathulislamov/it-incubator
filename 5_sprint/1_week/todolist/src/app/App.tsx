@@ -4,10 +4,8 @@ import { TodolistsList } from "../features/TodolistsList/TodolistsList"
 import { ErrorSnackbar } from "../components/ErrorSnackbar/ErrorSnackbar"
 import { useDispatch, useSelector } from "react-redux"
 import { AppRootStateType } from "./store"
-import { initializeAppTC, RequestStatusType } from "./app-reducer"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Login } from "../features/Login/Login"
-import { logoutTC } from "../features/Login/auth-reducer"
 import {
   AppBar,
   Button,
@@ -19,6 +17,7 @@ import {
   Typography,
 } from "@mui/material"
 import { Menu } from "@mui/icons-material"
+import { RequestStatusType, initializeAppTC } from "./appSlice"
 
 type PropsType = {
   demo?: boolean
@@ -83,3 +82,6 @@ function App({ demo = false }: PropsType) {
 }
 
 export default App
+function logoutTC(): any {
+  throw new Error("Function not implemented.")
+}
