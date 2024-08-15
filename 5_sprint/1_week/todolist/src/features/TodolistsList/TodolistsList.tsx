@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { AppRootStateType } from "../../app/store"
-import { addTaskTC, removeTaskTC, TasksStateType, updateTaskTC } from "./tasks-reducer"
 import { TaskStatuses } from "../../api/todolists-api"
 import { Grid, Paper } from "@mui/material"
 import { AddItemForm } from "../../components/AddItemForm/AddItemForm"
@@ -17,6 +16,7 @@ import {
   fetchTodolistsTC,
   removeTodolistTC,
 } from "./todolistsSlice"
+import { TasksStateType, addTaskTC, removeTaskTC, updateTaskTC } from "./tasksSlice"
 
 type PropsType = {
   demo?: boolean
