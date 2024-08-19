@@ -8,7 +8,7 @@ export class Game {
     let newX;
     let newY;
     do {
-      newX = NumberUtil.getRandomNumber(this.#settings.gridSize.colunms);
+      newX = NumberUtil.getRandomNumber(this.#settings.gridSize.columns);
       newY = NumberUtil.getRandomNumber(this.#settings.gridSize.rows);
     } while (
       takenPosition.some(
@@ -17,15 +17,27 @@ export class Game {
     );
     return new Position(newX, newY);
   }
+  #createUnits() {
+    const player1Position = this.#getRandomPosition();
+    this.#player1 = new Player(1, player1Position);
+
+    const player2Position = this.#getRandomPosition([player1Position]);
+    this.#player2 = new Player(2, player2Position);
+
+    const googlePosition = this.#getRandomPosition([
+      player1Position,
+      player2Position,
+    ]);
+
+    this.#google = new Google(googlePosition);
+  }
 
   start() {
     if (this.#status === "pending") {
       this.#status = "in-process";
     }
-    const player1Position = this.#getRandomPosition();
-    this.#player1 = new Player(1, player1Position);
-    const player2Position = this.#getRandomPosition([player1Position]);
-    this.#player2 = new Player(2, new Position(2, 3));
+
+    this.#createUnits();
   }
   set settings(settings) {
     this.#settings = settings;
@@ -36,16 +48,27 @@ export class Game {
   get status() {
     return this.#status;
   }
+  get payer1() {
+    return this.#player1;
+  }
+  get payer2() {
+    return this.#player2;
+  }
 }
-class Player {
-  constructor(id, position) {
-    this.id = id;
+class Units {
+  constructor(position) {
     this.position = position;
   }
 }
-class Google {
+class Player extends Units {
+  constructor(id, position) {
+    super(position);
+    this.id = id;
+  }
+}
+class Google extends Units {
   constructor(position) {
-    this.position = position;
+    super(position);
   }
 }
 class Position {
