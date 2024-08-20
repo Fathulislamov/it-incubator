@@ -1,0 +1,29 @@
+.radio {
+	/* display: none; */
+	accent-color: black;
+	width: 20px;
+}
+
+
+
+.radio::before {
+
+}
+
+
+.radio:checked::before {
+}
+
+.label {
+	display: flex;
+	gap: 11px;
+	font-size: 16px;
+
+}
+
+.options {
+	display: flex;
+	flex-direction: column;
+	gap: 21px;
+}
+

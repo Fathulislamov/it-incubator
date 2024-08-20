@@ -48,11 +48,14 @@ export class Game {
   get status() {
     return this.#status;
   }
-  get payer1() {
+  get player1() {
     return this.#player1;
   }
-  get payer2() {
+  get player2() {
     return this.#player2;
+  }
+  get google() {
+    return this.#google;
   }
 }
 class Units {

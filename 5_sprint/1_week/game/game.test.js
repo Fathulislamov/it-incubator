@@ -36,10 +36,20 @@ describe("Game Tests", () => {
         },
       };
       game.start();
-      expect([1, 2, 3, 4]).toContain(game.payer1.position.x);
-      expect([1, 2, 3]).toContain(game.payer1.position.y);
-      expect([1, 2, 3, 4]).toContain(game.payer2.position.x);
-      expect([1, 2, 3]).toContain(game.payer2.position.y);
+      expect([1, 2, 3, 4]).toContain(game.player1.position.x);
+      expect([1, 2, 3]).toContain(game.player1.position.y);
+
+      expect([1, 2, 3, 4]).toContain(game.player2.position.x);
+      expect([1, 2, 3]).toContain(game.player2.position.y);
+
+      expect(
+        (game.player1.position.x !== game.player2.position.x ||
+          game.player1.position.y !== game.player2.position.y) &&
+          (game.player1.position.x !== game.google.position.x ||
+            game.player1.position.y !== game.google.position.y) &&
+          (game.player2.position.x !== game.google.position.x ||
+            game.player2.position.y !== game.google.position.y),
+      ).toBe(true);
     }
   });
 });
