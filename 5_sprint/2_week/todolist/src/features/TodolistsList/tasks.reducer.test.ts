@@ -194,16 +194,11 @@ test("empty arrays should be added when we set todolists", () => {
 });
 
 test("tasks should be added for todolist", () => {
-  type Action = ReturnType<typeof fetchTasks.fulfilled>;
-  const action = {
+  type Action = Omit<ReturnType<typeof fetchTasks.fulfilled>, "meta">;
+  const action: Action = {
     type: fetchTasks.fulfilled.type,
     payload: { tasks: startState["todolistId1"], todolistId: "todolistId1" },
   };
-  const _action = fetchTasks.fulfilled(
-    { tasks: startState["todolistId1"], todolistId: "todolistId1" },
-    "requestId",
-    "todolistId1",
-  );
 
   const endState = tasksReducer(
     {
