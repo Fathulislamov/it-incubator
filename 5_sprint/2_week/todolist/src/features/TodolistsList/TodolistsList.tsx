@@ -8,7 +8,7 @@ import {
   removeTodolistTC,
   todolistsActions,
 } from "features/TodolistsList/todolists.reducer";
-import { addTaskTC, removeTaskTC, updateTaskTC } from "features/TodolistsList/tasks.reducer";
+import { addTask, removeTaskTC, updateTaskTC } from "features/TodolistsList/tasks.reducer";
 import { TaskStatuses } from "api/todolists-api";
 import { Grid, Paper } from "@mui/material";
 import { AddItemForm } from "components/AddItemForm/AddItemForm";
@@ -43,9 +43,8 @@ export const TodolistsList: React.FC<PropsType> = ({ demo = false }) => {
     dispatch(thunk);
   }, []);
 
-  const addTask = useCallback(function (title: string, todolistId: string) {
-    const thunk = addTaskTC(title, todolistId);
-    dispatch(thunk);
+  const addTaskCallBack = useCallback(function (title: string, todolistId: string) {
+    dispatch(addTask({ title, todolistId }));
   }, []);
 
   const changeStatus = useCallback(function (id: string, status: TaskStatuses, todolistId: string) {
@@ -77,7 +76,7 @@ export const TodolistsList: React.FC<PropsType> = ({ demo = false }) => {
       const thunk = addTodolistTC(title);
       dispatch(thunk);
     },
-    [dispatch]
+    [dispatch],
   );
 
   if (!isLoggedIn) {
@@ -101,7 +100,7 @@ export const TodolistsList: React.FC<PropsType> = ({ demo = false }) => {
                   tasks={allTodolistTasks}
                   removeTask={removeTask}
                   changeFilter={changeFilter}
-                  addTask={addTask}
+                  addTask={addTaskCallBack}
                   changeTaskStatus={changeStatus}
                   removeTodolist={removeTodolist}
                   changeTaskTitle={changeTaskTitle}
