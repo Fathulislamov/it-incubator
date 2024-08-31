@@ -73,6 +73,11 @@ export const authAPI = {
 };
 
 // types
+export enum ResultCode {
+  Success = 0,
+  Error = 1,
+  Captcha = 10,
+}
 export type TodolistType = {
   id: string;
   title: string;

@@ -1,4 +1,5 @@
 import {
+  ResultCode,
   TaskPriorities,
   TaskStatuses,
   TaskType,
@@ -93,7 +94,7 @@ export const addTask = createAppAsyncThunk<{ task: TaskType }, { title: string; 
     try {
       dispatch(appActions.setAppStatus({ status: "loading" }));
       const res = await todolistsAPI.createTask(arg.todolistId, arg.title);
-      if (res.data.resultCode === 0) {
+      if (res.data.resultCode === ResultCode.Success) {
         dispatch(appActions.setAppStatus({ status: "succeeded" }));
         return { task: res.data.data.item };
       } else {
