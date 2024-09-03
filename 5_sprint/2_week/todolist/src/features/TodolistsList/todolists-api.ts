@@ -1,6 +1,7 @@
-import axios from "axios";
 import { TaskPriorities, TaskStatuses } from "common/enums/enums";
+import { instance } from "common/instance/instance";
 import { UpdateDomainTaskModelType } from "features/TodolistsList/tasks.reducer";
+import { BaseResponse } from "common/types/types";
 
 // api
 export const todolistsAPI = {
@@ -9,7 +10,7 @@ export const todolistsAPI = {
     return promise;
   },
   createTodolist(title: string) {
-    const promise = instance.post<ResponseType<{ item: TodolistType }>>("todo-lists", { title: title });
+    const promise = instance.post<BaseResponse<{ item: TodolistType }>>("todo-lists", { title: title });
     return promise;
   },
   deleteTodolist(id: string) {
@@ -27,10 +28,10 @@ export const todolistsAPI = {
     return instance.delete<ResponseType>(`todo-lists/${todolistId}/tasks/${taskId}`);
   },
   createTask(todolistId: string, taskTitile: string) {
-    return instance.post<ResponseType<{ item: TaskType }>>(`todo-lists/${todolistId}/tasks`, { title: taskTitile });
+    return instance.post<BaseResponse<{ item: TaskType }>>(`todo-lists/${todolistId}/tasks`, { title: taskTitile });
   },
   updateTask(todolistId: string, taskId: string, model: UpdateTaskModelType) {
-    return instance.put<ResponseType<TaskType>>(`todo-lists/${todolistId}/tasks/${taskId}`, model);
+    return instance.put<BaseResponse<TaskType>>(`todo-lists/${todolistId}/tasks/${taskId}`, model);
   },
 };
 
@@ -38,28 +39,6 @@ export type UpdateTaskArgs = {
   taskId: string;
   model: UpdateDomainTaskModelType;
   todolistId: string;
-};
-
-export type LoginParamsType = {
-  email: string;
-  password: string;
-  rememberMe: boolean;
-  captcha?: string;
-};
-
-export const authAPI = {
-  login(data: LoginParamsType) {
-    const promise = instance.post<ResponseType<{ userId?: number }>>("auth/login", data);
-    return promise;
-  },
-  logout() {
-    const promise = instance.delete<ResponseType<{ userId?: number }>>("auth/login");
-    return promise;
-  },
-  me() {
-    const promise = instance.get<ResponseType<{ id: number; email: string; login: string }>>("auth/me");
-    return promise;
-  },
 };
 
 // types
