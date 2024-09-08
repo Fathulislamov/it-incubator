@@ -89,10 +89,10 @@ export class Game {
   #isOtherPayer(movingPlayer, otherPlayer, step) {
     let prevPlayer1Position = movingPlayer.position.copy();
     if (step.x) {
-      prevPlayer1Position += step.x;
+      prevPlayer1Position.x += step.x;
     }
     if (step.y) {
-      prevPlayer1Position += step.y;
+      prevPlayer1Position.y += step.y;
     }
     return prevPlayer1Position.equal(otherPlayer.position);
   }
@@ -100,35 +100,54 @@ export class Game {
     if (movingPlayer.position.equal(this.#google.position)) {
       this.#score[movingPlayer.id].points++;
     }
+    this.#moveGoogleToRandomPosition(false);
+  }
+
+  #movePlayer(movingPlayer, otherPlayer, step) {
+    const isBorder = this.#isBorder(movingPlayer, step);
+    const isOtherPayer = this.#isOtherPayer(movingPlayer, otherPlayer, step);
+    if (isBorder || isOtherPayer) return;
+    if (step.x) {
+      movingPlayer.position.x += step.x;
+    }
+    if (step.y) {
+      movingPlayer.position.y += step.y;
+    }
+    this.#checkGoogleCathing(movingPlayer);
   }
 
   movePayer1Right() {
     const step = { x: 1 };
-    if (this.#isBorder(this.#player1, step)) return;
-    if (this.#isOtherPayer(this.#player1, this.#player2, step)) return;
-    this.player1.position.x++;
+    this.#movePlayer(this.#player1, this.#player2, step);
   }
   movePayer1Left() {
     const step = { x: -1 };
+    this.#movePlayer(this.#player1, this.#player2, step);
   }
   movePayer1Up() {
     const step = { y: -1 };
+    this.#movePlayer(this.#player1, this.#player2, step);
   }
   movePayer1Down() {
     const step = { y: 1 };
+    this.#movePlayer(this.#player1, this.#player2, step);
   }
 
   movePayer2Right() {
     const step = { x: 1 };
+    this.#movePlayer(this.#player2, this.#player1, step);
   }
   movePayer2Left() {
     const step = { x: -1 };
+    this.#movePlayer(this.#player2, this.#player1, step);
   }
   movePayer2Up() {
     const step = { y: -1 };
+    this.#movePlayer(this.#player2, this.#player1, step);
   }
   movePayer2Down() {
     const step = { y: 1 };
+    this.#movePlayer(this.#player2, this.#player1, step);
   }
 
   set settings(settings) {
@@ -148,6 +167,9 @@ export class Game {
   }
   get google() {
     return this.#google;
+  }
+  get score() {
+    return this.#score;
   }
 }
 class Units {
