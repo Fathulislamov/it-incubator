@@ -86,4 +86,75 @@ describe("Game Tests", () => {
     }
   });
   const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+
+  it("should google be caught by player1 or player2 for one row", async () => {
+    for (let i = 0; i < 10; i++) {
+      game = new Game();
+      game.settings = {
+        gridSize: {
+          colums: 3,
+          rows: 1,
+        },
+      };
+      game.start();
+      const diffForPlayer1 = game.google.position.x - game.player1.position.x;
+      const prevGooglePositon = game.google.position.copy();
+      if (Math.abs(diffForPlayer1) === 2) {
+        const diffForPlayer2 = game.google.position.x - game.player2.position.x;
+        if (diffForPlayer2 > 0) {
+          game.movePayer2Right();
+        } else {
+          game.movePayer2Left();
+        }
+        expect(game.score[1].points).toBe(0);
+        expect(game.score[2].points).toBe(1);
+      } else {
+        // const diffForPlayer1 = game.google.position.x - game.player1.position.x;
+        if (diffForPlayer1 > 0) {
+          game.movePayer1Right();
+        } else {
+          game.movePayer1Left();
+        }
+        expect(game.score[1].points).toBe(1);
+        expect(game.score[2].points).toBe(0);
+      }
+      expect(game.google.position.equal(prevGooglePositon)).toBe(false);
+      game.stop();
+    }
+  });
+  it("should google be caught by player1 or player2 for one column", async () => {
+    for (let i = 0; i < 10; i++) {
+      game = new Game();
+      game.settings = {
+        gridSize: {
+          colums: 1,
+          rows: 3,
+        },
+      };
+      game.start();
+      const diffForPlayer1 = game.google.position.y - game.player1.position.y;
+      const prevGooglePositon = game.google.position.copy();
+      if (Math.abs(diffForPlayer1) === 2) {
+        const diffForPlayer2 = game.google.position.y - game.player2.position.y;
+        if (diffForPlayer2 > 0) {
+          game.movePayer2Down();
+        } else {
+          game.movePayer2Up();
+        }
+        expect(game.score[1].points).toBe(0);
+        expect(game.score[2].points).toBe(1);
+      } else {
+        // const diffForPlayer1 = game.google.position.x - game.player1.position.x;
+        if (diffForPlayer1 > 0) {
+          game.movePayer1Down();
+        } else {
+          game.movePayer1Up();
+        }
+        expect(game.score[1].points).toBe(1);
+        expect(game.score[2].points).toBe(0);
+      }
+      expect(game.google.position.equal(prevGooglePositon)).toBe(false);
+      game.stop();
+    }
+  });
 });
