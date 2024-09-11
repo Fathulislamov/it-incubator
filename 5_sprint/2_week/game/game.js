@@ -41,6 +41,7 @@ export class Game {
           this.#player2.position,
           this.#google.position,
         ]);
+    console.log("google", googlePosition);
     this.#google = new Google(googlePosition);
   }
   #createUnits() {
@@ -50,8 +51,7 @@ export class Game {
     const player2Position = this.#getRandomPosition([player1Position]);
     this.#player2 = new Player(2, player2Position);
 
-    const googlePosition = this.#moveGoogleToRandomPosition(true);
-    // this.#google = new Google(googlePosition);
+    this.#moveGoogleToRandomPosition(true);
   }
 
   start() {
@@ -72,14 +72,14 @@ export class Game {
   #isBorder(movingPlayer, step) {
     let prevPlayer1Position = movingPlayer.position.copy();
     if (step.x) {
-      prevPlayer1Position += step.x;
+      prevPlayer1Position.x += step.x;
       return (
         prevPlayer1Position.x < 1 ||
         prevPlayer1Position.x > this.#settings.gridSize.columns
       );
     }
     if (step.y) {
-      prevPlayer1Position += step.y;
+      prevPlayer1Position.y += step.y;
       return (
         prevPlayer1Position.y < 1 ||
         prevPlayer1Position.y > this.#settings.gridSize.rows
