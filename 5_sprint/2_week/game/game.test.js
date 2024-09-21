@@ -160,16 +160,17 @@ describe("Game Tests", () => {
 	it('first or second player wins', () => {
 		game = new Game();
 		game.settings = {
+			pointsToWin: 3,
 			gridSize: {
-				columns: 1,
-				rows: 3,
+				columns: 3,
+				rows: 1,
 			},
 		};
 
 		game.start();
 		const diffForPlayer1 = game.google.position.x - game.player1.position.x;
 		if (Math.abs(diffForPlayer1) === 2) {
-			const diffForPlayer2 = game.google.position.y - game.player2.position.y;
+			const diffForPlayer2 = game.google.position.x - game.player2.position.x;
 			if (diffForPlayer2 > 0) {
 				game.movePayer2Right()
 				game.movePayer2Left()
@@ -179,7 +180,7 @@ describe("Game Tests", () => {
 				game.movePayer2Right()
 				game.movePayer2Left()
 			}
-			expect(game.status).toBe('finiched');
+			expect(game.status).toBe('finished');
 			expect(game.score[1].points).toBe(0)
 			expect(game.score[2].points).toBe(3)
 		} else {
@@ -192,9 +193,9 @@ describe("Game Tests", () => {
 				game.movePayer1Right()
 				game.movePayer1Left()
 			}
-			expect(game.status).toBe('finiched');
-			expect(game.score[1].points).toBe(0)
-			expect(game.score[2].points).toBe(3)
+			expect(game.status).toBe('finished');
+			expect(game.score[1].points).toBe(3)
+			expect(game.score[2].points).toBe(0)
 		}
 	})
 });
