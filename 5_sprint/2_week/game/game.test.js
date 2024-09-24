@@ -96,6 +96,7 @@ describe("Game Tests", () => {
 					rows: 1,
 				},
 			};
+			
 			game.start();
 			const diffForPlayer1 = game.google.position.x - game.player1.position.x;
 			const prevGooglePositon = game.google.position.copy();
