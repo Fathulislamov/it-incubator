@@ -16,12 +16,16 @@ const slice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action) => {
-      state.isLoggedIn = action.payload.isLoggedIn;
-    });.addCase(login.fulfilled, (state, action) => {
-      state.isLoggedIn = action.payload.isLoggedIn;
-    });
-
+    builder
+      .addCase(login.fulfilled, (state, action) => {
+        state.isLoggedIn = action.payload.isLoggedIn;
+      })
+      .addCase(logout.fulfilled, (state, action) => {
+        state.isLoggedIn = action.payload.isLoggedIn;
+      })
+      .addCase(initializeApp.fulfilled, (state, action) => {
+        state.isLoggedIn = action.payload.isLoggedIn;
+      });
   },
 });
 
@@ -65,6 +69,28 @@ export const logout = createAppAsyncThunk<{ isLoggedIn: boolean }, undefined>(
     } catch (e) {
       handleServerNetworkError(e, dispatch);
       return rejectWithValue(null);
+    }
+  },
+);
+
+export const initializeApp = createAppAsyncThunk<{ isLoggedIn: boolean }, undefined>(
+  `${slice.name}/initializeApp`,
+  async (_, thunkAPI) => {
+    const { dispatch, rejectWithValue } = thunkAPI;
+    try {
+      const res = await authAPI.me();
+      if (res.data.resultCode === 0) {
+        return { isLoggedIn: true };
+      } else {
+        //TODO
+        // handleServerNetworkError(res.data, dispatch);
+        return rejectWithValue(null);
+      }
+    } catch (e) {
+      handleServerNetworkError(e, dispatch);
+      return rejectWithValue(null);
+    } finally {
+      dispatch(appActions.setAppInitialized({ isInitialized: true }));
     }
   },
 );
