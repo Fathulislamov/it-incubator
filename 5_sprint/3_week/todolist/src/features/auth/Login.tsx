@@ -36,12 +36,11 @@ export const Login = () => {
         .unwrap()
         .then((res) => {})
         .catch((err: BaseResponse) => {
-          err.fieldErrors.forEach((el) => {
-            formikHelpers.setFieldError(el.field, el.error);
-          });
-          // const error = err.fieldErrors[0].error;
-          // const field = err.fieldErrors[0].field;
-          // formikHelpers.setFieldError(field, error);
+          if (err.fieldErrors) {
+            err.fieldErrors.forEach((el) => {
+              formikHelpers.setFieldError(el.field, el.error);
+            });
+          }
         });
     },
   });

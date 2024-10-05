@@ -40,7 +40,8 @@ const login = createAppAsyncThunk<{ isLoggedIn: boolean }, LoginParamsType>(
         dispatch(appActions.setAppStatus({ status: "succeeded" }));
         return { isLoggedIn: true };
       } else {
-        handleServerAppError(res.data, dispatch);
+        handleServerAppError(res.data, dispatch, false);
+        // dispatch(appActions.setAppStatus({ status: "failed" }));
         return rejectWithValue(res.data);
       }
     } catch (e) {
@@ -81,8 +82,7 @@ export const initializeApp = createAppAsyncThunk<{ isLoggedIn: boolean }, undefi
       if (res.data.resultCode === 0) {
         return { isLoggedIn: true };
       } else {
-        //TODO
-        // handleServerNetworkError(res.data, dispatch);
+        handleServerAppError(res.data, dispatch, false);
         return rejectWithValue(null);
       }
     } catch (e) {
