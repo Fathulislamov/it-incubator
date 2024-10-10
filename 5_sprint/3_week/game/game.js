@@ -4,7 +4,7 @@ export class Game {
 			columns: 4,
 			rows: 3,
 		},
-		googleJumpInterval: 100,
+		googleJumpInterval: 2000,
 		pointsToWin: 10
 	};
 
@@ -17,6 +17,9 @@ export class Game {
 		1: { points: 0 },
 		2: { points: 0 },
 	};
+	constructor(eventEmitter) {
+		this.eventEmitter = eventEmitter;
+	}
 	#getRandomPosition(takenPosition = []) {
 		let newX;
 		let newY;
@@ -43,6 +46,8 @@ export class Game {
 				this.#google.position,
 			]);
 		this.#google = new Google(googlePosition);
+
+		this.eventEmitter.emit('changePosition')
 	}
 	#createUnits() {
 		const player1Position = this.#getRandomPosition();
@@ -119,6 +124,8 @@ export class Game {
 			movingPlayer.position.y += step.y;
 		}
 		this.#checkGoogleCathing(movingPlayer);
+
+		this.eventEmitter.emit('changePosition')
 	}
 
 	movePayer1Right() {
