@@ -80,11 +80,17 @@ const HW15 = () => {
 	const onChangeSort = (newSort: string) => {
 		// делает студент
 
+		// console.log(newSort)
+		// const newArray = techs.sort((a, b) => a.tech.localeCompare(newSort))
+		// console.log(techs)
+		// console.log(newSort)
+		// setSort(newSort)
+
+		// setTechs(newArray)
+		sendQuery({ sort: newSort, page, count })
+		setSearchParams({ newSort, page: page.toString(), count: count.toString() })
 		setSort(newSort)
 		setPage(1) // при сортировке сбрасывать на 1 страницу
-
-		sendQuery({ newSort, page, count })
-		setSearchParams({ newSort, page: page.toString(), count: count.toString() })
 		// sendQuery(
 		// setSearchParams(
 
@@ -93,7 +99,7 @@ const HW15 = () => {
 
 	useEffect(() => {
 		const params = Object.fromEntries(searchParams)
-		console.log(params)
+		// console.log(params)
 		sendQuery({ page: params.page, count: params.count })
 		setPage(+params.page || 1)
 		setCount(+params.count || 4)
