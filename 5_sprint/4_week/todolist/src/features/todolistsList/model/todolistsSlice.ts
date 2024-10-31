@@ -4,6 +4,7 @@ import { clearTasksAndTodolists } from "common/actions"
 import { ResultCode } from "common/enums"
 import { createAppAsyncThunk, handleServerAppError, thunkTryCatch } from "common/utils"
 import { todolistsApi } from "../api/todolistsApi"
+import { TodolistType, UpdateTodolistTitleArgType } from "../api/todolistsApi.types"
 
 const slice = createSlice({
   name: "todolists",

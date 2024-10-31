@@ -17,8 +17,8 @@ import "./App.css"
 import { ErrorSnackbar } from "common/components"
 import { authThunks, selectIsLoggedIn } from "../features/auth/model/authSlice"
 import { Login } from "../features/auth/ui/login/Login"
-import { TodolistsList } from "../features/todolistsList/TodolistsList"
 import { selectIsInitialized, selectStatus } from "./appSlice"
+import { TodolistsList } from "features/todolistsList/ui/TodolistsList"
 
 function App() {
   const status = useSelector(selectStatus)
