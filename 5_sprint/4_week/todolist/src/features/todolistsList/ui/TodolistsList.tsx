@@ -25,22 +25,6 @@ export const TodolistsList = () => {
     dispatch(todolistsThunks.fetchTodolists())
   }, [])
 
-  const addTask = useCallback(function (title: string, todolistId: string) {
-    dispatch(tasksThunks.addTask({ title, todolistId }))
-  }, [])
-
-  const changeFilter = useCallback(function (filter: FilterValuesType, id: string) {
-    dispatch(todolistsActions.changeTodolistFilter({ id, filter }))
-  }, [])
-
-  const removeTodolist = useCallback(function (id: string) {
-    dispatch(todolistsThunks.removeTodolist(id))
-  }, [])
-
-  const changeTodolistTitle = useCallback(function (id: string, title: string) {
-    dispatch(todolistsThunks.changeTodolistTitle({ id, title }))
-  }, [])
-
   const addTodolist = useCallback((title: string) => {
     dispatch(todolistsThunks.addTodolist(title))
   }, [])
@@ -61,14 +45,7 @@ export const TodolistsList = () => {
           return (
             <Grid item key={tl.id}>
               <Paper style={{ padding: "10px" }}>
-                <Todolist
-                  todolist={tl}
-                  tasks={allTodolistTasks}
-                  changeFilter={changeFilter}
-                  addTask={addTask}
-                  removeTodolist={removeTodolist}
-                  changeTodolistTitle={changeTodolistTitle}
-                />
+                <Todolist todolist={tl} tasks={allTodolistTasks} />
               </Paper>
             </Grid>
           )

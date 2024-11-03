@@ -5,19 +5,19 @@ import { TaskStatuses } from "common/enums"
 import { useAppDispatch } from "common/hooks"
 import React, { useCallback, useEffect } from "react"
 import { Task } from "./Task/Task"
-import { FilterValuesType, TodolistDomainType } from "features/todolistsList/model/todolistsSlice"
+import { TodolistDomainType, todolistsActions, todolistsThunks } from "features/todolistsList/model/todolistsSlice"
 import { TaskType } from "features/todolistsList/api/tasksApi.types"
 import { tasksThunks } from "features/todolistsList/model/tasksSlice"
 
 type PropsType = {
   todolist: TodolistDomainType
   tasks: TaskType[]
-  changeFilter: (value: FilterValuesType, todolistId: string) => void
-  addTask: (title: string, todolistId: string) => void
-  removeTodolist: (id: string) => void
-  changeTodolistTitle: (id: string, newTitle: string) => void
 }
 
+//
+// const changeFilter = useCallback(function (filter: FilterValuesType, id: string) {
+//   dispatch(todolistsActions.changeTodolistFilter({ id, filter }))
+// }, [])
 export const Todolist = React.memo(function (props: PropsType) {
   const dispatch = useAppDispatch()
 
@@ -25,36 +25,29 @@ export const Todolist = React.memo(function (props: PropsType) {
     dispatch(tasksThunks.fetchTasks(props.todolist.id))
   }, [])
 
-  const addTask = useCallback(
-    (title: string) => {
-      props.addTask(title, props.todolist.id)
-    },
-    [props.addTask, props.todolist.id],
-  )
-
-  const removeTodolist = () => {
-    props.removeTodolist(props.todolist.id)
+  const addTask = (title: string) => {
+    dispatch(tasksThunks.addTask({ title, todolistId: props.todolist.id }))
   }
 
-  const changeTodolistTitle = useCallback(
-    (title: string) => {
-      props.changeTodolistTitle(props.todolist.id, title)
-    },
-    [props.todolist.id, props.changeTodolistTitle],
-  )
+  const removeTodolist = () => {
+    dispatch(todolistsThunks.removeTodolist(props.todolist.id))
+  }
 
-  const onAllClickHandler = useCallback(
-    () => props.changeFilter("all", props.todolist.id),
-    [props.todolist.id, props.changeFilter],
-  )
-  const onActiveClickHandler = useCallback(
-    () => props.changeFilter("active", props.todolist.id),
-    [props.todolist.id, props.changeFilter],
-  )
-  const onCompletedClickHandler = useCallback(
-    () => props.changeFilter("completed", props.todolist.id),
-    [props.todolist.id, props.changeFilter],
-  )
+  const changeTodolistTitle = (title: string) => {
+    dispatch(todolistsThunks.changeTodolistTitle({ id: props.todolist.id, title }))
+  }
+
+  const onAllClickHandler = () => {
+    dispatch(todolistsActions.changeTodolistFilter({ id: props.todolist.id, filter: "all" }))
+  }
+
+  const onActiveClickHandler = () => {
+    dispatch(todolistsActions.changeTodolistFilter({ id: props.todolist.id, filter: "active" }))
+  }
+
+  const onCompletedClickHandler = () => {
+    dispatch(todolistsActions.changeTodolistFilter({ id: props.todolist.id, filter: "completed" }))
+  }
 
   let tasksForTodolist = props.tasks
 
