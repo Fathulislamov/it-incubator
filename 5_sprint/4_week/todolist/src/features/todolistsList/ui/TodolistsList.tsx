@@ -1,14 +1,13 @@
 import { Grid, Paper } from "@mui/material"
 import { AddItemForm } from "common/components"
-import { TaskStatuses } from "common/enums"
 import { useAppDispatch } from "common/hooks"
 import { useCallback, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { Navigate } from "react-router-dom"
 import { selectIsLoggedIn } from "features/auth/model/authSlice"
 import { Todolist } from "./Todolist/Todolist"
-import { selectTasks, tasksThunks } from "../model/tasksSlice"
-import { FilterValuesType, selectTodolists, todolistsActions, todolistsThunks } from "../model/todolistsSlice"
+import { selectTasks } from "../model/tasksSlice"
+import { selectTodolists, todolistsThunks } from "../model/todolistsSlice"
 import React from "react"
 
 export const TodolistsList = () => {
