@@ -11,30 +11,27 @@ export const FilterTasksButtons = ({ todolist }: Props) => {
   const dispatch = useAppDispatch()
 
   const changeTodolistFilterHandler = (filter: FilterValuesType) => {
-    dispatch(todolistsActions.changeTodolistFilter({ id, filter: "all" }))
-  }
-  const onAllClickHandler = () => {
-    dispatch(todolistsActions.changeTodolistFilter({ id, filter: "all" }))
-  }
-
-  const onActiveClickHandler = () => {
-    dispatch(todolistsActions.changeTodolistFilter({ id, filter: "active" }))
-  }
-
-  const onCompletedClickHandler = () => {
-    dispatch(todolistsActions.changeTodolistFilter({ id, filter: "completed" }))
+    dispatch(todolistsActions.changeTodolistFilter({ id, filter }))
   }
   return (
     <>
-      <Button variant={filter === "all" ? "outlined" : "text"} onClick={onAllClickHandler} color={"inherit"}>
+      <Button
+        variant={filter === "all" ? "outlined" : "text"}
+        onClick={() => changeTodolistFilterHandler("all")}
+        color={"inherit"}
+      >
         All
       </Button>
-      <Button variant={filter === "active" ? "outlined" : "text"} onClick={onActiveClickHandler} color={"primary"}>
+      <Button
+        variant={filter === "active" ? "outlined" : "text"}
+        onClick={() => changeTodolistFilterHandler("active")}
+        color={"primary"}
+      >
         Active
       </Button>
       <Button
         variant={filter === "completed" ? "outlined" : "text"}
-        onClick={onCompletedClickHandler}
+        onClick={() => changeTodolistFilterHandler("completed")}
         color={"secondary"}
       >
         Completed
