@@ -1,9 +1,11 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from "react"
 import { IconButton, TextField } from "@mui/material"
 import { AddBox } from "@mui/icons-material"
+import { unwrapResult } from "@reduxjs/toolkit"
+import { BaseResponse } from "common/types"
 
 type Props = {
-  addItem: (title: string) => void
+  addItem: (title: string) => Promise<any>
   disabled?: boolean
 }
 
@@ -14,9 +16,14 @@ export const AddItemForm = React.memo(function ({ addItem, disabled = false }: P
   const addItemHandler = () => {
     if (title.trim() !== "") {
       addItem(title)
-      setTitle("")
+        .then(unwrapResult)
+        .then(() => {
+          setTitle("")
+        })
+        .catch((err: BaseResponse) => {
+          setError(err.messages[0])
+        })
     } else {
-      setError("Title is required")
     }
   }
 

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, isFulfilled, PayloadAction } from "@reduxjs/toolkit"
 import { appActions } from "app/appSlice"
 import { clearTasksAndTodolists } from "common/actions"
 import { ResultCode } from "common/enums"
@@ -12,16 +12,22 @@ const slice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(login.fulfilled, (state, action) => {
+    builder.addMatcher(
+      // (action) => {
+      //   if (
+      //     action.type === login.fulfilled.type ||
+      //     action.type === logout.fulfilled.type ||
+      //     action.type === initializeApp.fulfilled.type
+      //   ) {
+      //     return true
+      //   } else return false
+      //
+      // },
+      isFulfilled(login, logout, initializeApp),
+      (state, action: PayloadAction<{ isLoggedIn: boolean }>) => {
         state.isLoggedIn = action.payload.isLoggedIn
-      })
-      .addCase(logout.fulfilled, (state, action) => {
-        state.isLoggedIn = action.payload.isLoggedIn
-      })
-      .addCase(initializeApp.fulfilled, (state, action) => {
-        state.isLoggedIn = action.payload.isLoggedIn
-      })
+      },
+    )
   },
   selectors: {
     selectIsLoggedIn: (state) => state.isLoggedIn,

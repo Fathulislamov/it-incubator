@@ -6,13 +6,11 @@ import { useSelector } from "react-redux"
 import { Navigate } from "react-router-dom"
 import { selectIsLoggedIn } from "features/auth/model/authSlice"
 import { Todolist } from "./Todolist/Todolist"
-import { selectTasks } from "../model/tasksSlice"
 import { selectTodolists, todolistsThunks } from "../model/todolistsSlice"
 import React from "react"
 
 export const TodolistsList = () => {
   const todolists = useSelector(selectTodolists)
-  const tasks = useSelector(selectTasks)
   const isLoggedIn = useSelector(selectIsLoggedIn)
 
   const dispatch = useAppDispatch()
@@ -25,7 +23,7 @@ export const TodolistsList = () => {
   }, [])
 
   const addTodolist = useCallback((title: string) => {
-    dispatch(todolistsThunks.addTodolist(title))
+    return dispatch(todolistsThunks.addTodolist(title))
   }, [])
 
   if (!isLoggedIn) {
@@ -39,12 +37,10 @@ export const TodolistsList = () => {
       </Grid>
       <Grid container spacing={3}>
         {todolists.map((tl) => {
-          let allTodolistTasks = tasks[tl.id]
-
           return (
             <Grid item key={tl.id}>
               <Paper style={{ padding: "10px" }}>
-                <Todolist todolist={tl} tasks={allTodolistTasks} />
+                <Todolist todolist={tl} />
               </Paper>
             </Grid>
           )
