@@ -1,4 +1,7 @@
-import { tasksReducer } from "../features/TodolistsList/tasks-reducer";
+import {
+  tasksReducer,
+  fetchTasksWorkerSaga
+} from "../features/TodolistsList/tasks-reducer";
 import { todolistsReducer } from "../features/TodolistsList/todolists-reducer";
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunkMiddleware from "redux-thunk";
@@ -28,7 +31,8 @@ export type AppRootStateType = ReturnType<typeof rootReducer>;
 sagaMiddleware.run(rootWatcher);
 
 function* rootWatcher() {
-  yield takeEvery("ACTIVATOR-ACTION-TYPE", initializeAppWorkerSaga);
+  yield takeEvery("APP/INITIALIZE-APP", initializeAppWorkerSaga);
+  yield takeEvery("TASKS/FETCH-TASKS", fetchTasksWorkerSaga);
 }
 // а это, чтобы можно было в консоли браузера обращаться к store в любой момент
 // @ts-ignore
