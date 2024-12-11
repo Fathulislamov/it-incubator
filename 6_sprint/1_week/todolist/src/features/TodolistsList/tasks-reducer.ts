@@ -89,42 +89,16 @@ export const setTasksAC = (tasks: Array<TaskType>, todolistId: string) =>
   ({ type: "SET-TASKS", tasks, todolistId } as const);
 
 // sagas
-export function* fetchTasksWorkerSaga(action: ReturnType<typeof fetchTasks>) {
-  yield put(setAppStatusAC("loading"));
-  const res: AxiosResponse<GetTasksResponse> = yield call(
-    todolistsAPI.getTasks,
-    action.todolistId
-  );
-  // todolistsAPI.getTasks(todolistId).then(res => {
-  const tasks = res.data.items;
-  yield put(setTasksAC(tasks, action.todolistId));
-  yield put(setAppStatusAC("succeeded"));
-}
-
-export const fetchTasks = (todolistId: string) => ({
-  type: "TASKS/FETCH-TASKS",
-  todolistId
-});
 // thunks
-// export const fetchTasksTC = (todolistId: string) => (
-//   dispatch: Dispatch<ActionsType | SetAppStatusActionType>
+
+// export const removeTaskTC = (taskId: string, todolistId: string) => (
+//   dispatch: Dispatch<ActionsType>
 // ) => {
-//   dispatch(setAppStatusAC("loading"));
-//   todolistsAPI.getTasks(todolistId).then(res => {
-//     const tasks = res.data.items;
-//     dispatch(setTasksAC(tasks, todolistId));
-//     dispatch(setAppStatusAC("succeeded"));
+//   todolistsAPI.deleteTask(todolistId, taskId).then(res => {
+//     const action = removeTaskAC(taskId, todolistId);
+//     dispatch(action);
 //   });
 // };
-
-export const removeTaskTC = (taskId: string, todolistId: string) => (
-  dispatch: Dispatch<ActionsType>
-) => {
-  todolistsAPI.deleteTask(todolistId, taskId).then(res => {
-    const action = removeTaskAC(taskId, todolistId);
-    dispatch(action);
-  });
-};
 export const addTaskTC = (title: string, todolistId: string) => (
   dispatch: Dispatch<
     ActionsType | SetAppErrorActionType | SetAppStatusActionType
