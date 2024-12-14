@@ -5,5 +5,5 @@ import { initializeAppWorkerSaga } from "./app-sagas";
 test("intializeAppWorkerSaga", () => {
   const gen = initializeAppWorkerSaga();
   const result = gen.next();
-  expect(result.value).toBe(call(authAPI.me));
+  expect(result.value).toEqual(call(authAPI.me));
 });
