@@ -34,8 +34,10 @@ export const todolistsAPI = {
     });
     return promise;
   },
-  getTasks(todolistId: string): Promise<AxiosResponse<GetTasksResponse>> {
-    return instance.get<GetTasksResponse>(`todo-lists/${todolistId}/tasks`);
+  getTasks(todolistId: string): Promise<GetTasksResponse> {
+    return instance
+      .get<GetTasksResponse>(`todo-lists/${todolistId}/tasks`)
+      .then(res => res.data);
   },
   deleteTask(
     todolistId: string,
@@ -65,6 +67,11 @@ export type LoginParamsType = {
   rememberMe: boolean;
   captcha?: string;
 };
+export type MeResponseType = ResponseType<{
+  id: number;
+  email: string;
+  login: string;
+}>;
 
 export const authAPI = {
   login(data: LoginParamsType) {
@@ -81,10 +88,8 @@ export const authAPI = {
     return promise;
   },
   me() {
-    const promise = instance.get<
-      ResponseType<{ id: number; email: string; login: string }>
-    >("auth/me");
-    return promise;
+    const promise = instance.get<MeResponseType>("auth/me");
+    return promise.then(res => res.data);
   }
 };
 

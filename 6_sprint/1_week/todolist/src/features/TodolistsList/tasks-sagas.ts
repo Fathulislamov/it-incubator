@@ -21,11 +21,11 @@ import {
 
 export function* fetchTasksWorkerSaga(action: ReturnType<typeof fetchTasks>) {
   yield put(setAppStatusAC("loading"));
-  const res: AxiosResponse<GetTasksResponse> = yield call(
+  const data: GetTasksResponse = yield call(
     todolistsAPI.getTasks,
     action.todolistId
   );
-  const tasks = res.data.items;
+  const tasks = data.items;
   yield put(setTasksAC(tasks, action.todolistId));
   yield put(setAppStatusAC("succeeded"));
 }
