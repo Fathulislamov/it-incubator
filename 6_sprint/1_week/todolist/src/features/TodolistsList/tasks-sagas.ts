@@ -16,7 +16,9 @@ import {
 } from "./tasks-reducer";
 import {
   handleServerAppError,
-  handleServerNetworkError
+  handleServerNetworkError,
+  handleServerAppErrorSaga,
+  handleServerNetworkErrorSaga
 } from "../../utils/error-utils";
 
 export function* fetchTasksWorkerSaga(action: ReturnType<typeof fetchTasks>) {
@@ -46,8 +48,8 @@ export const removeTasks = (taskId: string, todolistId: string) => ({
 });
 
 export function* addTaskWorkerSaga(action: ReturnType<typeof addTasks>) {
+  yield put(setAppStatusAC("loading"));
   try {
-    yield put(setAppStatusAC("loading"));
     const res = yield call(
       todolistsAPI.createTask,
       action.todolistId,
@@ -55,22 +57,23 @@ export function* addTaskWorkerSaga(action: ReturnType<typeof addTasks>) {
     );
     if (res.data.resultCode === 0) {
       const task = res.data.data.item;
-      const action = yield addTaskAC(task);
+      const action = addTaskAC(task);
       yield put(action);
       yield put(setAppStatusAC("succeeded"));
     } else {
-      yield call(handleServerAppError, res.data, put);
+      yield handleServerAppErrorSaga(res.data);
     }
   } catch (error) {
-    yield call(handleServerNetworkError, error, put);
+    yield handleServerNetworkErrorSaga(error);
   }
 }
 
-export const addTasks = (title: string, todolistId: string) => ({
-  type: "TASKS/ADD-TASK",
-  title,
-  todolistId
-});
+export const addTasks = (title: string, todolistId: string) =>
+  ({
+    type: "TASKS/ADD-TASK",
+    title,
+    todolistId
+  } as const);
 
 export function* updateTaskWorkerSaga(action: ReturnType<typeof updateTask>) {
   try {

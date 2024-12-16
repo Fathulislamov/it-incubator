@@ -1,4 +1,4 @@
-import { fetchTasksWorkerSaga } from "./tasks-sagas";
+import { fetchTasksWorkerSaga, addTaskWorkerSaga } from "./tasks-sagas";
 import { setAppStatusAC } from "../../app/app-reducer";
 import { put, call } from "redux-saga/effects";
 import {
@@ -7,16 +7,16 @@ import {
   TaskStatuses,
   TaskPriorities
 } from "../../api/todolists-api";
+import { setTasksAC } from "./tasks-reducer";
 
 beforeEach(() => {});
 
 test("fetchTasksWorkerSaga success flow", () => {
-  const gen = fetchTasksWorkerSaga({ type: "", todolistId: "todolistId" });
-  let result = gen.next();
-  expect(result.value).toEqual(put(setAppStatusAC("loading")));
+  const todolistId = "todolistId";
+  const gen = fetchTasksWorkerSaga({ type: "", todolistId });
+  expect(gen.next().value).toEqual(put(setAppStatusAC("loading")));
 
-  result = gen.next();
-  expect(result.value).toEqual(call(todolistsAPI.getTasks, "todolistId"));
+  expect(gen.next().value).toEqual(call(todolistsAPI.getTasks, todolistId));
 
   const fakeResponse: GetTasksResponse = {
     items: [
@@ -37,6 +37,10 @@ test("fetchTasksWorkerSaga success flow", () => {
     error: null
   };
 
-  result = gen.next(fakeResponse);
-  // expect(result.value).toEqual(call(todolistsAPI.getTasks, "todolistId"));
+  expect(gen.next(fakeResponse).value).toEqual(
+    put(setTasksAC(fakeResponse.items, todolistId))
+  );
+  const next = gen.next();
+  expect(next.value).toEqual(put(setAppStatusAC("succeeded")));
+  expect(next.done).toBeTruthy();
 });
