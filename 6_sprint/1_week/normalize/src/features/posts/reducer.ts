@@ -8,8 +8,8 @@ export const postsReducer = (state = initialState, action: ReturnType<typeof fet
 	switch (action.type) {
 		case 'fetchPostsSuccess':
 			return {
-				...state,
-				items: action.payload.posts,
+				// ...state,
+				items.push(action.payload.posts),
 			}
 		default: return state
 
@@ -20,7 +20,7 @@ export const postsReducer = (state = initialState, action: ReturnType<typeof fet
 export const fetchPostsSuccess = (posts: PostType[]) => ({
 	type: 'fetchPostsSuccess',
 	payload: { posts }
-} as const)
+})
 
 export const fetchPosts = () => async (dispatch: Dispatch) => {
 	const posts = await api.getPosts()
