@@ -1,6 +1,6 @@
 import { useEffect } from "react"
-import { useSelector } from "react-redux"
-import { appDispatch, AppStateType } from "../features/app/store"
+import { useDispatch, useSelector } from "react-redux"
+import { AppStateType } from "../features/app/store"
 import { Post } from "../features/posts/components/Post"
 import { fetchPosts } from "../features/posts/reducer"
 
@@ -8,10 +8,10 @@ export const PostsPages = () => {
 
 	const items = useSelector((state: AppStateType) => state.posts.items)
 
-	const dispatch = appDispatch()
+	const dispatch = useDispatch()
 
 	useEffect(() => {
-		dispatch(fetchPosts())
+		// dispatch(fetchPosts())
 	}, [])
 
 	return (

@@ -1,15 +1,13 @@
-import { useDispatch } from "react-redux";
-import { applyMiddleware, combineReducers, legacy_createStore, AnyAction, createStore } from "redux";
-import { thunk as thunkMiddleware, ThunkDispatch } from "redux-thunk";
 import { postsReducer } from "../posts/reducer";
-
-const rootReducer = combineReducers(
+import thunkMiddleware from 'redux-thunk' //thunkMiddleware
+import { applyMiddleware, combineReducers, createStore, legacy_createStore, UnknownAction } from "redux";
+let rootReducer = combineReducers(
 	{
 		posts: postsReducer
 	}
 )
 export type AppStateType = ReturnType<typeof rootReducer>
-export type AppDispatchType = ThunkDispatch<AppStateType, any, AnyAction>
+// export type AppDispatchType = ThunkDispatch<AppStateType, any, UnknownAction>
 
-export const appDispatch = () => useDispatch<AppDispatchType>()
-export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))
+// export const appDispatc = () => useDispatch<AppDispatchType>()
+export const store = legacy_createStore(rootReducer, applyMiddleware(thunkMiddleware))
