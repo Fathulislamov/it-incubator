@@ -16,11 +16,11 @@ const blablaMiddleware = (req: Request, res: Response, next: NextFunction) => {
 }
 
 const authGuardMiddleware = (req: Request, res: Response, next: NextFunction) => {
-	if (req.query.token === '123') {
-		next()
-	} else {
-		res.send(401)
-	}
+	// if (req.query.token === '123') {
+	next()
+	// } else {
+	// res.send(401)
+	// }
 }
 
 let requestCounter = 0
