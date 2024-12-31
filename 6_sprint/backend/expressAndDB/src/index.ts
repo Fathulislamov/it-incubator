@@ -11,7 +11,7 @@ const jsonBodyMiddleware = bodyParser.json()
 app.use(jsonBodyMiddleware)
 
 
-app.get('/products', productsRouter)
+app.use('/products', productsRouter)
 
 const startApp = async () => {
 	await runDB()
