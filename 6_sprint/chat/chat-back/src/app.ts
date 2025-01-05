@@ -42,18 +42,35 @@ const messages = [
 	},
 ]
 
+const userState = new Map()
 app.get('/', (req, res) => {
 	res.send("Hello, it's WS server")
 })
 
 socket.on('connection', (socketChannel) => {
+
+	socketChannel.on('disconnect', () => {
+		userState.delete(socketChannel)
+	})
+
+	userState.set(socketChannel, { id: new Date().getTime().toString(), name: 'anon' })
+
 	console.log('a user connected')
 	// socket.on('disconnect', () => {
 	// 	console.log('user disconnected')
 	// })
+	socketChannel.on('client-name-sent', (name: string) => {
+		const user = userState.get(socketChannel)
+		if (user) {
+			user.name = name
+		}
+
+	})
 	socketChannel.on('client-message-sent', (message: string) => {
+		// console.log(socketChannel)
 		console.log(message)
-		const messageItem = { message, id: Date.now().toString(), user: { id: 'jflfjdsljf', name: 'Victor' } }
+		const user = userState.get(socketChannel)
+		const messageItem = { message, id: Date.now().toString(), user: { id: user.id, name: user.name } }
 		messages.push(messageItem)
 		socket.emit('new-message-sent', messageItem)
 	})
