@@ -1,25 +1,30 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { io } from 'socket.io-client';
+import { useDispatch, useSelector } from 'react-redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { thunk } from 'redux-thunk';
 import './App.css';
+import { chatReduser, createConnection, destroyConnection } from './chat-reduser';
 
-const socket = io("http://localhost:3009");
+const rootReducer = { chat: chatReduser }
+type AppStateType = ReturnType<typeof rootReducer>
+const store = createStore(combineReducers(rootReducer), applyMiddleware(thunk))
 
 function App() {
 
+	const messages = useSelector((state: AppStateType) => state.chat.messages)
+	const dispatch = useDispatch()
+
 	useEffect(() => {
+		dispatch(createConnection())
+		return () => {
 
-		socket.on('init-messages-publiched', (messages) => {
-			setMessages(messages)
-		})
+			dispatch(destroyConnection())
+		}
 
-		socket.on('new-message-sent', (message) => {
-			console.log(messages)
-			setMessages(messages => [...messages, message])
-		})
 	}, [])
 
 	const [message, setMessage] = useState('hello');
-	const [messages, setMessages] = useState<any[]>([]);
+	// const [messages, setMessages] = useState<any[]>([]);
 	const [name, setName] = useState('');
 	const [isAutoScrollActive, setIsAutoScrollActive] = useState(true);
 	const [lastScrollTop, setLastScrollTop] = useState(0);
