@@ -50,7 +50,16 @@ function App() {
 					dispatch(setClientName(name))
 				}}>send name</button>
 			</div>
-			<textarea name="" id="" value={message} onChange={(e) => setMessage(e.target.value)} ></textarea>
+			<textarea
+				name=""
+				id=""
+				value={message}
+				onKeyPress={() => {
+
+					dispatch(typeMessage())
+				}}
+				onChange={(e) => setMessage(e.target.value)} >
+			</textarea>
 			<button onClick={() => {
 				dispatch(sendMessage(message))
 				setMessage('')

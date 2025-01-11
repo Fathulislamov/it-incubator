@@ -1,7 +1,8 @@
 import { api } from "./api"
 
 const initialState = {
-	messages: []
+	messages: [],
+	typindUsers: []
 }
 export const chatReduser = (state: any = initialState, action: any) => {
 	switch (action.type) {
@@ -34,7 +35,11 @@ export const createConnection = () => (dispatch: any) => {
 		},
 		(message: any) => {
 			dispatch(newMessagesReceived(message))
-		})
+		},
+		(user: any) => {
+			console.log(user)
+		}
+	)
 }
 
 export const destroyConnection = () => (dispatch: any) => {
@@ -47,4 +52,8 @@ export const setClientName = (name: string) => (dispatch: any) => {
 
 export const sendMessage = (message: string) => (dispatch: any) => {
 	api.sendMessage(message)
+}
+
+export const typeMessage = () => (dispatch: any) => {
+	api.typeMessage()
 }
