@@ -1,3 +1,5 @@
+import { api } from "./api"
+
 const initialState = {
 	messages: []
 }
@@ -25,12 +27,24 @@ const messagesReceived = (messages: any) => ({ type: 'messages-received', messag
 const newMessagesReceived = (message: any) => ({ type: 'new-message-received', message })
 
 export const createConnection = () => (dispatch: any) => {
-	return {
-		type: 'blabla'
-	}
+	api.createConnection()
+	api.subscribe(
+		(messages: any) => {
+			dispatch(messagesReceived(messages))
+		},
+		(message: any) => {
+			dispatch(newMessagesReceived(message))
+		})
 }
+
 export const destroyConnection = () => (dispatch: any) => {
-	return {
-		type: 'blabla'
-	}
+	api.destroyConnection()
+}
+
+export const setClientName = (name: string) => (dispatch: any) => {
+	api.sendName(name)
+}
+
+export const sendMessage = (message: string) => (dispatch: any) => {
+	api.sendMessage(message)
 }
