@@ -8,6 +8,7 @@ import {
 import { Header } from "../../components/Header/Header";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { Card } from "../../components/Card/Card";
+import { getLayout } from "../../components/Layout/BaseLayout/BaseLayout";
 
 // export const getServerSideProps = async () => {};
 
@@ -44,12 +45,8 @@ const Locations = () => {
     <Card key={location.id} name={location.name} />
   ));
 
-  return (
-    <PageWrapper>
-      <Header />
-      {locationList}
-    </PageWrapper>
-  );
+  return <PageWrapper>{locationList}</PageWrapper>;
 };
 
+Locations.getLayout = getLayout;
 export default Locations;
