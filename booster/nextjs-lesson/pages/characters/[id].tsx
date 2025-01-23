@@ -8,6 +8,8 @@ import { CharacterCard } from "../../components/Card/CharacterCard/CharacterCard
 import { Header } from "../../components/Header/Header";
 import { getLayout } from "../../components/Layout/BaseLayout/BaseLayout";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
+import { useRouter } from "next/router";
+import styled from "styled-components";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { results } = await API.rickAndMorty.getCharacters();
@@ -16,7 +18,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
   return {
     paths,
-    fallback,
+    // fallback: "blocking",
+    fallback: true,
   };
 };
 
@@ -45,12 +48,50 @@ type PropsType = {
 const Character = (props: PropsType) => {
   const { character } = props;
 
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <h1>Loading...</h1>;
+  }
+
+  const characterId = router.query.id;
+
+  const goToCharacters = () => router.push("/characters");
+
   return (
     <PageWrapper>
-      <CharacterCard key={character.id} character={character} />;
+      <Container>
+        <IdText>ID: {characterId}</IdText>
+        <CharacterCard key={character.id} character={character} />;
+        <Button onClick={goToCharacters}>GO TO CHARACTERS</Button>
+      </Container>
     </PageWrapper>
   );
 };
 
 Character.getLayout = getLayout;
 export default Character;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const IdText = styled.div`
+  font-size: 40px;
+`;
+
+const Button = styled.button`
+  width: 330px;
+  height: 60px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(131, 134, 135, 0);
+  background-color: #fa52d3;
+  color: #fff;
+  font-size: 20px;
+  &:hover {
+    background-color: #ff7aff;
+    color: #fff;
+  }
+`;
