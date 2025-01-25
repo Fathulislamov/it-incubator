@@ -12,9 +12,20 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   );
   const episodes = await API.rickAndMorty.getEpisodes();
 
+  const isAuth = true;
+
   if (!episodes) {
     return {
       notFound: true,
+    };
+  }
+
+  if (!isAuth) {
+    return {
+      redirect: {
+        destination: "/test",
+        permanent: false,
+      },
     };
   }
 
@@ -41,4 +52,3 @@ const Episodes = (props: PropsType) => {
 
 Episodes.getLayout = getLayout;
 export default Episodes;
-
