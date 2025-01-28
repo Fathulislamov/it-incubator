@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseURL } from "common/api/common.api";
-import { FetchCardsResponseType } from "./types";
+import { ArgCreateCardType, FetchCardsResponseType } from "./types";
 
 export const cardsApi = createApi({
   reducerPath: "cardsApi",
@@ -25,8 +25,17 @@ export const cardsApi = createApi({
           };
         },
       }),
+      addCard: build.mutation<any, ArgCreateCardType>({
+        query: (card) => {
+          return {
+            method: "POST",
+            url: "cards/card",
+            body: card,
+          };
+        },
+      }),
     };
   },
 });
 
-export const { useGetCardsQuery } = cardsApi;
+export const { useGetCardsQuery, useAddCardMutation } = cardsApi;
