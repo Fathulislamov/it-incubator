@@ -1,6 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseURL } from "common/api/common.api";
-import { ArgCreateCardType, FetchCardsResponseType } from "./types";
+import {
+  AddCardResponseType,
+  ArgCreateCardType,
+  FetchCardsResponseType,
+} from "./types";
 
 export const cardsApi = createApi({
   reducerPath: "cardsApi",
@@ -8,6 +12,7 @@ export const cardsApi = createApi({
     baseUrl: baseURL,
     credentials: "include",
   }),
+  tagTypes: ["Card"],
   // endpoints - объект, содержащий эндпоинты для этого API, описанные с помощью функций,
   // которые будут вызываться при вызове соответствующих методов API (например, get, post, put, patch, delete). Обязательный параметр.
   endpoints: (build) => {
@@ -21,18 +26,24 @@ export const cardsApi = createApi({
             url: "cards/card",
             params: {
               cardsPack_id: packId,
+              page,
+              pageCount,
             },
           };
         },
+        providesTags: ["Card"],
       }),
-      addCard: build.mutation<any, ArgCreateCardType>({
+      addCard: build.mutation<AddCardResponseType, ArgCreateCardType>({
         query: (card) => {
           return {
             method: "POST",
             url: "cards/card",
-            body: card,
+            body: {
+              card,
+            },
           };
         },
+        invalidatesTags: ["Card"],
       }),
     };
   },

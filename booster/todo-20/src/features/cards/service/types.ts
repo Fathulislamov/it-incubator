@@ -44,3 +44,9 @@ export type ArgCreateCardType = {
   questionVideo?: string;
   answerVideo?: string;
 };
+
+export type AddCardResponseType = {
+  newCard: CardType;
+  token: string;
+  tokenDeathTime: number;
+};
